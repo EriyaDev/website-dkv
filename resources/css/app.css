@@ -1,11 +1,186 @@
-@import 'tailwindcss';
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://api.fontshare.com/v2/css?f[]=satoshi@300,301,400,401,500,501,700,701,900,901&display=swap");
+
+@import "tailwindcss";
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
 @source '../**/*.js';
+@source "../views";
+
+/* @import "remixicon/fonts/remixicon.css"; */
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+        "Noto Color Emoji";
+
+    --font-poppins: "Poppins", "sans-serif";
+    --font-satoshi: "Satoshi", "sans-serif";
+
+    --color-primary-color: #f5f7fb;
+    --color-secondary-color: #ffffff;
+    --color-third-color: #222222;
+    --color-success-color: #00a84f;
+
+    --color-accent-color: #6e62e5;
+    --color-accent-secondary-color: #29405b;
+    --color-inactive-color: #a1a0a0;
+    --color-gray-button-color: #f6f6f6;
+
+    --color-border-color: #d7d7d7;
+
+    --color-text-primary-color: #151314;
+    --color-text-secondary-color: #7d7d7d;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+* {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+.dd-closed {
+    @apply hidden;
+}
+
+.breadcrumbs-inactive {
+    @apply text-xl font-medium text-inactive-color;
+}
+
+.breadcrumbs-active {
+    @apply text-xl font-medium text-accent-color;
+}
+
+.page-title {
+    @apply text-xl font-medium text-text-primary-color;
+}
+
+.box-title {
+    @apply text-base text-text-primary-color font-medium;
+}
+
+.box-dashboard {
+    @apply bg-secondary-color p-8 rounded-xl mt-9 overflow-x-auto;
+}
+
+.input-container {
+    @apply grid grid-cols-2 gap-8 mb-8;
+}
+
+.button-primary {
+    @apply text-sm py-2 px-6 rounded-md border border-accent-color text-secondary-color bg-accent-color;
+}
+
+.button-login {
+    @apply text-base py-3 px-6 rounded-md border border-accent-color text-secondary-color bg-accent-color w-full;
+}
+
+.button-success {
+    @apply flex flex-row gap-1 items-center text-sm p-2 rounded-md border border-success-color text-secondary-color bg-success-color;
+}
+
+.button-secondary {
+    @apply text-sm py-2 px-6 rounded-md border border-text-primary-color text-text-primary-color;
+}
+
+.button-third {
+    @apply text-sm py-2 px-4 rounded-md border border-inactive-color text-text-primary-color;
+}
+
+.hide {
+    @apply -translate-x-full;
+}
+
+.full {
+    @apply w-full !ml-0;
+}
+
+table {
+    @apply w-full min-w-[940px] lg:min-w-fit table-auto whitespace-nowrap;
+}
+
+.disabled {
+    @apply text-inactive-color;
+}
+
+aside,
+main,
+nav {
+    @apply duration-700 ease-in-out;
+}
+
+/* Table */
+.thead-cell {
+    @apply px-4 py-2 bg-gray-button-color text-sm font-semibold text-text-primary-color;
+}
+
+.table-cell {
+    @apply py-5 px-4 bg-secondary-color text-sm text-text-primary-color;
+}
+
+tr:nth-child(even) {
+    @apply brightness-[.98];
+}
+
+table thead td:first-child {
+    @apply rounded-l-lg;
+}
+table thead td:last-child {
+    @apply rounded-r-lg;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+}
+
+.crud-subtitle {
+    @apply text-base font-medium text-text-primary-color mb-5;
+}
+
+/* Chosen */
+.input-box,
+.chosen-container {
+    @apply bg-secondary-color placeholder-inactive-color border border-border-color text-text-primary-color text-sm rounded-lg focus:ring-accent-color outline-accent-color focus:border-accent-color block w-full p-2.5 appearance-none;
+}
+
+.chosen-single {
+    @apply !border-none !bg-none !appearance-none !p-0 !shadow-none !h-fit;
+}
+
+.chosen-container-single .chosen-single div {
+    display: none !important;
+}
+
+/* dashboard */
+
+.dashboard-title-small {
+    @apply font-medium text-text-secondary-color;
+}
+
+.dashboard-title-medium {
+    @apply font-semibold text-text-secondary-color text-xl;
+}
+
+.small-info {
+    @apply flex flex-col  gap-2;
+}
+
+.label-text {
+    @apply text-sm  text-inactive-color font-normal text-left;
 }
