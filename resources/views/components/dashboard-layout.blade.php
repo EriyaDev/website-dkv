@@ -67,7 +67,7 @@
                 </ul>
 
                 <ul class="mt-28">
-                    <form id="logoutForm" action="" method="POST">
+                    <form id="logoutForm" action="{{ url('/logout') }}">
                         @csrf
                         <x-nav-link href="javascript:void(0);" :active="request()->is('/')"
                             onclick="document.getElementById('logoutForm').submit();">
