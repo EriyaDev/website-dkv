@@ -67,7 +67,7 @@
 }
 
 .box-dashboard {
-    @apply bg-secondary-color p-8 rounded-xl mt-9 overflow-x-auto;
+    @apply bg-secondary-color p-8 rounded-xl mt-9 overflow-x-auto border border-border-color;
 }
 
 .input-container {
