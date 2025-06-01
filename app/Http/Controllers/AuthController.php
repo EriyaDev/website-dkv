@@ -40,7 +40,7 @@ class AuthController extends Controller
         }
 
         return back()->withErrors([
-            'username' => 'Login gagal. Periksa kembali username dan password.',
+            'username' => 'Login gagal. Periksa kembali username atau password.',
         ])->onlyInput('username');
     }
 
@@ -58,6 +58,16 @@ class AuthController extends Controller
             'username' => ['required', 'unique:users'],
             'email' => ['required', 'email', 'unique:users'],
             'password' => ['required', 'min:6'],
+        ], 
+        [
+            'name.required' => 'Nama wajib diisi.',
+            'username.required' => 'Username harus diisi.',
+            'username.unique' => 'Username sudah terpakai.',
+            'email.required' => 'Email wajib diisi.',
+            'email.email' => 'Format email tidak valid.',
+            'email.unique' => 'Email sudah terpakai.',
+            'password.required' => 'Password wajib diisi.',
+            'password.min' => 'Password minimal 6 karakter.',
         ]);
 
         $user = User::create([
