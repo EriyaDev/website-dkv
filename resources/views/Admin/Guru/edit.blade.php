@@ -5,10 +5,9 @@
         <h1 class="breadcrumbs-active">Edit</h1>
     </div>
 
-
-
     <div class="box-dashboard">
-        <form action="{{ route('guru.update', $guru->id) }}" method="POST">
+
+        <form action="{{ route('admin.guru.update', $guru->id) }}" method="POST">
             @csrf
 
             @if ($errors->any())
@@ -31,7 +30,7 @@
                     <x-select-option name="user_id" id="nama" :disabled="false">
                         <option value="" selected disabled>--Pilih Guru--</option>
                         @foreach ($teachers as $teacher)
-                            <option value="{{ $teacher->id }}">{{ $teacher->name }}</option>
+                            <option value="{{ $teacher->id }} ">{{ $teacher->name }}</option>
                         @endforeach
                     </x-select-option>
                 </div>
@@ -51,16 +50,18 @@
                 <div class="input-group">
                     <x-label for="alamat">Alamat</x-label>
                     <x-input id="alamat" type="text" :disabled="false" name="alamat"
-                        value="{{ old('nip', $guru->alamat) }}" placeholder="Masukkan alamat guru..."></x-input>
+                        value="{{ old('alamat', $guru->alamat) }}" placeholder="Masukkan alamat guru..."></x-input>
+
                 </div>
                 <div class="input-group">
                     <x-label for="no_telepon">No. Telepon</x-label>
                     <x-input id="no_telepon" type="tel" :disabled="false" name="no_telepon"
-                        value="{{ old('nip', $guru->no_telepon) }}" placeholder="Masukkan no telepon guru..."></x-input>
+                        value="{{ old('no_telepon', $guru->no_telepon) }}"
+                        placeholder="Masukkan no telepon guru..."></x-input>
                 </div>
             </div>
             <div class="flex flex-row gap-3">
-                <a href="{{ route('guru.index') }}" class="button-secondary" type="submit">Cancel</a>
+                <a href="{{ route('admin.guru.index') }}" class="button-secondary" type="submit">Cancel</a>
                 <button class="button-primary" type="submit">Confirm</button>
             </div>
         </form>

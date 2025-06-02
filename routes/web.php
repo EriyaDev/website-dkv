@@ -1,18 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Request;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\ResetPasswordController;
-use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\JamPelajaranController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\MapelController;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 // Tak Komenin dulu cik
 Route::get('/', function () {
@@ -26,56 +22,26 @@ Route::middleware(['guest'])->group(function () {
 
     Route::get('/register', [AuthController::class, 'registerForm'])->name('register');
     Route::post('/register', [AuthController::class, 'createUser']);
-
-    // Password Reset Routes
-    Route::get('/forgot-password', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
-
-    Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
-
-    Route::get('/reset-password/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
-
-    Route::post('/reset-password', [ResetPasswordController::class, 'reset'])->name('password.update');
 });
 
 // Logout Route
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // User (GURU) Routes
-Route::middleware(['auth', 'GuruMiddleware', 'verified'])->group(function () {
+Route::middleware(['auth', 'GuruMiddleware'])->group(function () {
     Route::get('/dashboard', [UserController::class, 'index'])->name('dashboard');
 });
 
 // Admin Routes
-Route::prefix('admin')->name('admin.')->group( function () {
-    Route::middleware(['auth', 'AdminMiddleware', 'verified'])->group(function () {
-        Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
-        Route::resource('kelas', KelasController::class);
-        Route::resource('jadwal', JadwalController::class);
-        Route::resource('jam-pelajaran', JamPelajaranController::class);
-        Route::resource('mapel', MapelController::class);
-        Route::resource('guru', GuruController::class);
-    });
+Route::prefix('admin')->name('admin.')->middleware(['auth', 'AdminMiddleware'])->group(function () {
+    Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
+    Route::resource('guru', GuruController::class);
+    Route::resource('kelas', KelasController::class);
+    Route::resource('jadwal', JadwalController::class);
+    Route::resource('jam-pelajaran', JamPelajaranController::class);
+    Route::resource('mapel', MapelController::class);
 });
 
-
-// Email Verification Routes
-Route::middleware('auth')->group(function () {
-    Route::get('/email/verify', function () {
-        return view('auth.verify-email');
-    })->middleware('auth')->name('verification.notice');
-
-    Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-        $request->fulfill();
-
-        return redirect('/dashboard');
-    })->middleware(['auth', 'signed'])->name('verification.verify');
-
-    Route::post('/email/verification-notification', function (Request $request) {
-        $request->user()->sendEmailVerificationNotification();
-
-        return back()->with('message', 'Verification link sent!');
-    })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
-});
 
 // Tak Komenin dulu cik
 // Route::get('/dashboard', function () {

@@ -2,7 +2,7 @@
     {{-- @dd($teachers); --}}
     <div class="flex flex-row justify-between items-center">
         <h1 class="page-title">Guru</h1>
-        <a href="{{ route('guru.create') }}"
+        <a href="{{ route('admin.guru.create') }}"
             class="py-2 px-4 rounded-md bg-accent-color text-white flex flex-row gap-1 items-center"><i
                 class="ri-add-line"></i></i>Buat Baru</a>
         {{-- <a href="{{ route('member.archive') }}"
@@ -39,7 +39,7 @@
                                     <a class="text-blue-500" href="{{ route('guru.show', $teacher->id) }}">
                                         <i class="text-base ri-eye-line text-text-secondary-color"></i>
                                     </a>
-                                    <a class="text-blue-500" href="{{ route('guru.edit', $teacher->id) }}">
+                                    <a class="text-blue-500" href="{{ route('admin.guru.edit', $teacher->id) }}">
                                         <i class="text-base ri-edit-line text-accent-color"></i>
                                     </a>
                                     <form action="" method="post" onsubmit="confirm('Are you sure?')">

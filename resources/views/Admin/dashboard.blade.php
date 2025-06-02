@@ -5,9 +5,6 @@
         <h1 class="breadcrumbs-active">Create</h1>
     </div>
 
-    <a href="{{ route('guru.index') }}">Guru</a>
-
-
     <div class="box-dashboard">
         <form action="" method="POST">
             @csrf

@@ -46,14 +46,14 @@ class GuruController extends Controller
         Guru::create([
             'user_id' => $request->user_id,
             'nip' => $request->nip,
-            'nip' => $request->nip,
             'foto' => $request->foto,
             'jenis_kelamin' => $request->jenis_kelamin,
             'alamat' => $request->alamat,
             'no_telepon' => $request->no_telepon,
         ]);
 
-        return redirect()->route('admin.guru.index')->with('success', 'Data berhasil dibuat!');
+
+        return redirect()->route('admin.guru.index')->with('success', 'Data guru berhasil ditambahkan.');
     }
 
     /**
@@ -61,6 +61,7 @@ class GuruController extends Controller
      */
     public function show(string $id)
     {
+
         $guru = Guru::findOrFail($id);
         $teachers = Guru::all();
 
@@ -73,6 +74,7 @@ class GuruController extends Controller
     public function edit(string $id)
     {
         $guru = Guru::findOrFail($id);
+
         $teachers = Guru::all();
 
         return view('Admin.Guru.edit', compact('id', 'teachers', 'guru'));
@@ -92,9 +94,9 @@ class GuruController extends Controller
             'no_telepon' => 'required|string',
         ]);
 
+
         $guru->update([
             'user_id' => $request->user_id,
-            'nip' => $request->nip,
             'nip' => $request->nip,
             'foto' => $request->foto,
             'jenis_kelamin' => $request->jenis_kelamin,
