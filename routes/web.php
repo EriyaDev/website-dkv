@@ -46,9 +46,17 @@ Route::middleware(['auth', 'GuruMiddleware', 'verified'])->group(function () {
 });
 
 // Admin Routes
-Route::middleware(['auth', 'AdminMiddleware', 'verified'])->group(function () {
-    Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+Route::prefix('admin')->name('admin.')->group( function () {
+    Route::middleware(['auth', 'AdminMiddleware', 'verified'])->group(function () {
+        Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+        Route::resource('kelas', KelasController::class);
+        Route::resource('jadwal', JadwalController::class);
+        Route::resource('jam-pelajaran', JamPelajaranController::class);
+        Route::resource('mapel', MapelController::class);
+        Route::resource('guru', GuruController::class);
+    });
 });
+
 
 // Email Verification Routes
 Route::middleware('auth')->group(function () {
@@ -70,12 +78,6 @@ Route::middleware('auth')->group(function () {
 });
 
 // Tak Komenin dulu cik
-Route::get('/dashboard', function () {
-    return view('Admin.Guru.create'); // Tak Ganti Cik, Nanti Sesuain aja
-});
-
-Route::resource('kelas', KelasController::class);
-Route::resource('jadwal', JadwalController::class);
-Route::resource('jam-pelajaran', JamPelajaranController::class);
-Route::resource('mapel', MapelController::class);
-Route::resource('guru', GuruController::class);
+// Route::get('/dashboard', function () {
+//     return view('Admin.Guru.create'); // Tak Ganti Cik, Nanti Sesuain aja
+// });
