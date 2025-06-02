@@ -1,14 +1,14 @@
 <x-dashboard-layout>
     <div class="flex flex-row items-center">
-        <a href="" class="breadcrumbs-inactive">Ruang</a>
+        <a href="{{ url('admin/ruang') }}" class="breadcrumbs-inactive">Ruang</a>
         <h1 class="breadcrumbs-inactive">/</h1>
         <h1 class="breadcrumbs-active">Edit</h1>
     </div>
 
     <div class="box-dashboard">
-        <form action="" method="POST">
+        <form action="{{ url('admin/ruang/' . $data->id) }}" method="POST">
             @csrf
-
+            @method('PUT')
             @if ($errors->any())
                 <div class="p-3 rounded-md text-red-500 border border-red-500 bg-[#ef44441a] mb-5">
                     <ul>
@@ -22,12 +22,12 @@
             <div class="input-container !grid-cols-1">
                 <div class="input-group">
                     <x-label for="name">Nama Ruang</x-label>
-                    <x-input id="name" type="text" :disabled="false" name="name" value="Lab 1"
-                        placeholder="Enter member name..."></x-input>
+                    <x-input id="name" type="text" :disabled="false" name="nama_ruang"
+                        value="{{ $data->nama_ruang }}" placeholder="Enter member name..."></x-input>
                 </div>
             </div>
             <div class="flex flex-row gap-3">
-                <a href="" class="button-secondary" type="submit">Cancel</a>
+                <a href="{{ url('admin/ruang') }}" class="button-secondary" type="submit">Cancel</a>
                 <button class="button-primary" type="submit">Confirm</button>
             </div>
         </form>

@@ -6,7 +6,7 @@
     </div>
 
     <div class="box-dashboard">
-        <form action="" method="POST">
+        <form action="{{ url('admin/mapel') }}" method="POST">
             @csrf
 
             @if ($errors->any())
@@ -21,12 +21,12 @@
             <div class="input-container !grid-cols-1">
                 <div class="input-group">
                     <x-label for="name">Nama Mata Pelajaran</x-label>
-                    <x-input id="name" type="text" :disabled="false" name="name" value=""
+                    <x-input id="name" type="text" :disabled="false" name="nama_mapel" value=""
                         placeholder="Masukan nama mapel"></x-input>
                 </div>
             </div>
             <div class="flex flex-row gap-3">
-                <a href="" class="button-secondary" type="submit">Cancel</a>
+                <a href="{{ url('admin/mapel') }}" class="button-secondary" type="submit">Cancel</a>
                 <button class="button-primary" type="submit">Confirm</button>
             </div>
         </form>

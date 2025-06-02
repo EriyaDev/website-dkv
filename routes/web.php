@@ -9,6 +9,7 @@ use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\JamPelajaranController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\MapelController;
+use App\Http\Controllers\RuangController;
 
 // Tak Komenin dulu cik
 Route::get('/', function () {
@@ -40,6 +41,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'AdminMiddleware'])-
     Route::resource('jadwal', JadwalController::class);
     Route::resource('jam-pelajaran', JamPelajaranController::class);
     Route::resource('mapel', MapelController::class);
+    Route::resource('ruang', RuangController::class);
 });
 
 

@@ -30,11 +30,11 @@ class RuangController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama_mapel' => 'required'
+            'nama_ruang' => 'required'
         ]);
 
         $data = [
-            'nama_mapel' => $request->nama_mapel
+            'nama_ruang' => $request->nama_ruang
         ];
 
         Ruang::create($data);
@@ -65,11 +65,11 @@ class RuangController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama_mapel' => 'required'
+            'nama_ruang' => 'required'
         ]);
 
         $data = [
-            'nama_mapel' => $request->nama_mapel
+            'nama_ruang' => $request->nama_ruang
         ];
 
         Ruang::where('id', $id)->update($data);

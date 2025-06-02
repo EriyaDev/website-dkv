@@ -1,6 +1,6 @@
 <x-dashboard-layout>
     <div class="flex flex-row items-center">
-        <a href="" class="breadcrumbs-inactive">Ruang</a>
+        <a href="{{ url('admin/ruang') }}" class="breadcrumbs-inactive">Ruang</a>
         <h1 class="breadcrumbs-inactive">/</h1>
         <h1 class="breadcrumbs-active">View</h1>
     </div>
@@ -21,12 +21,12 @@
             <div class="input-container !grid-cols-1">
                 <div class="input-group">
                     <x-label for="name">Nama Ruang</x-label>
-                    <x-input id="name" type="text" :disabled="false" name="name" value="Lab 1" disabled
-                        placeholder="Enter member name..."></x-input>
+                    <x-input id="name" type="text" :disabled="true" name="name"
+                        value="{{ $data->nama_ruang }}" placeholder="Enter member name..."></x-input>
                 </div>
             </div>
             <div class="flex flex-row gap-3">
-                <a href="" class="button-secondary" type="submit">Cancel</a>
+                <a href="{{ url('admin/ruang') }}" class="button-secondary" type="submit">Cancel</a>
             </div>
         </form>
     </div>
