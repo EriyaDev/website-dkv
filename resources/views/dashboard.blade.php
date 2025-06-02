@@ -5,6 +5,8 @@
         <h1 class="breadcrumbs-active">SUMASuKaEL</h1>
     </div>
 
+    <a href="{{ route('guru.index') }}">Guru</a>
+
 
 
     <div class="box-dashboard">
