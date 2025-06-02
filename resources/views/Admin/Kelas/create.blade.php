@@ -8,7 +8,7 @@
 
 
     <div class="box-dashboard">
-        <form action="" method="POST">
+        <form action="{{ route('kelas.store') }}" method="POST">
             @csrf
 
             @if ($errors->any())

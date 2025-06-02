@@ -5,10 +5,8 @@
         <h1 class="breadcrumbs-active">Edit</h1>
     </div>
 
-
-
     <div class="box-dashboard">
-        <form action="{{ route('guru.update', $id->id) }}" method="POST">
+        <form action="{{ route('admin.guru.update', $guru->id) }}" method="POST">
             @csrf
 
             @if ($errors->any())
@@ -24,14 +22,14 @@
                 <div class="input-group">
                     <x-label for="nip">NIP</x-label>
                     <x-input id="nip" type="number" :disabled="false" name="nip"
-                        value="{{ old('nip', $id->nip) }}" placeholder="Masukkan NIP guru..."></x-input>
+                        value="{{ old('nip', $guru->nip) }}" placeholder="Masukkan NIP guru..."></x-input>
                 </div>
                 <div class="input-group">
                     <x-label for="nama">Nama</x-label>
                     <x-select-option name="user_id" id="nama" :disabled="false">
                         <option value="" selected disabled>--Pilih Guru--</option>
                         @foreach ($teachers as $teacher)
-                            <option value="{{ $teacher->id }}">{{ $teacher->name }}</option>
+                            <option value="{{ $teacher->id }} ">{{ $teacher->name }}</option>
                         @endforeach
                     </x-select-option>
                 </div>
@@ -51,16 +49,16 @@
                 <div class="input-group">
                     <x-label for="alamat">Alamat</x-label>
                     <x-input id="alamat" type="text" :disabled="false" name="alamat"
-                        value="{{ old('nip', $id->alamat) }}" placeholder="Masukkan alamat guru..."></x-input>
+                        value="{{ old('alamat', $guru->alamat) }}" placeholder="Masukkan alamat guru..."></x-input>
                 </div>
                 <div class="input-group">
                     <x-label for="no_telepon">No. Telepon</x-label>
                     <x-input id="no_telepon" type="tel" :disabled="false" name="no_telepon"
-                        value="{{ old('nip', $id->no_telepon) }}" placeholder="Masukkan no telepon guru..."></x-input>
+                        value="{{ old('no_telepon', $guru->no_telepon) }}" placeholder="Masukkan no telepon guru..."></x-input>
                 </div>
             </div>
             <div class="flex flex-row gap-3">
-                <a href="{{ route('guru.index') }}" class="button-secondary" type="submit">Cancel</a>
+                <a href="{{ route('admin.guru.index') }}" class="button-secondary" type="submit">Cancel</a>
                 <button class="button-primary" type="submit">Confirm</button>
             </div>
         </form>

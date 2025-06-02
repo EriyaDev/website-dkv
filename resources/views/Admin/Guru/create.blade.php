@@ -8,7 +8,7 @@
 
 
     <div class="box-dashboard">
-        <form action="{{ route('guru.store') }}" method="POST">
+        <form action="{{ route('admin.guru.store') }}" method="POST">
             @csrf
 
             @if ($errors->any())
@@ -60,7 +60,7 @@
                 </div>
             </div>
             <div class="flex flex-row gap-3">
-                <a href="{{ route('guru.index') }}" class="button-secondary" type="submit">Cancel</a>
+                <a href="{{ route('admin.guru.index') }}" class="button-secondary" type="submit">Cancel</a>
                 <button class="button-primary" type="submit">Confirm</button>
             </div>
         </form>

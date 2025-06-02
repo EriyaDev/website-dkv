@@ -23,12 +23,12 @@
             <div class="input-container">
                 <div class="input-group">
                     <x-label for="nip">NIP</x-label>
-                    <x-input id="nip" type="text" :disabled="true" name="nip" value="{{ old('') }}"
+                    <x-input id="nip" type="text" :disabled="true" name="nip" value="{{ old('nip') }}"
                         placeholder="Masukkan NIP guru..."></x-input>
                 </div>
                 <div class="input-group">
                     <x-label for="nama">Nama</x-label>
-                    <x-input id="nama" type="text" :disabled="true" name="nama" value="{{ old('') }}"
+                    <x-input id="nama" type="text" :disabled="true" name="nama" value="{{ old('nama') }}"
                         placeholder="Masukkan nama guru..."></x-input>
                 </div>
                 <div class="input-group">
@@ -39,13 +39,13 @@
                 </div>
                 <div class="input-group">
                     <x-label for="alamat">Alamat</x-label>
-                    <x-input id="alamat" type="text" :disabled="true" name="alamat" value="{{ old('') }}"
+                    <x-input id="alamat" type="text" :disabled="true" name="alamat" value="{{ old('alamat') }}"
                         placeholder="Masukkan alamat guru..."></x-input>
                 </div>
                 <div class="input-group">
                     <x-label for="no_telepon">No. Telepon</x-label>
                     <x-input id="no_telepon" type="tel" :disabled="true" name="no_telepon"
-                        value="{{ old('') }}" placeholder="Masukkan no telepon guru..."></x-input>
+                        value="{{ old('no_telepon') }}" placeholder="Masukkan no telepon guru..."></x-input>
                 </div>
             </div>
             <div class="flex flex-row gap-3">

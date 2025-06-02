@@ -33,10 +33,10 @@ class AuthController extends Controller
             $request->session()->regenerate();
 
             if (Auth::user()->role === 'admin') {
-                return redirect()->intended('/admin/dashboard');
+                return redirect()->intended(route('admin.dashboard'));
             }
 
-            return redirect()->intended('/dashboard');
+            return redirect()->intended('/dashboard')->with('success', 'Selamat datang, ' . Auth::user()->name . '.');
         }
 
         return back()->withErrors([
@@ -81,12 +81,7 @@ class AuthController extends Controller
         Auth::login($user);
         event(new Registered($user));
 
-        // cek apakah email sudah diverifikasi
-        if (!$user->hasVerifiedEmail()) {
-            return redirect()->route('verification.notice');
-        }
-
-        return redirect('/dashboard');
+        return redirect('/dashboard')->with('success', 'Registrasi berhasil! Selamat datang, ' . $user->name . '.');
     }
 
     // Logout

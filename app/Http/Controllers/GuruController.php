@@ -46,12 +46,13 @@ class GuruController extends Controller
         Guru::create([
             'user_id' => $request->user_id,
             'nip' => $request->nip,
-            'nip' => $request->nip,
             'foto' => $request->foto,
             'jenis_kelamin' => $request->jenis_kelamin,
             'alamat' => $request->alamat,
             'no_telepon' => $request->no_telepon,
         ]);
+
+        return redirect()->route('admin.guru.index')->with('success', 'Data guru berhasil ditambahkan.');
     }
 
     /**
@@ -59,7 +60,8 @@ class GuruController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $teachers = Guru::where('id', $id)->first();
+        return view('Admin.Guru.show', compact('teachers'));
     }
 
     /**
@@ -67,7 +69,9 @@ class GuruController extends Controller
      */
     public function edit(string $id)
     {
-        return view('Admin.Guru.edit', compact('id'));
+        $guru = Guru::findOrFail($id);
+        $teachers = User::all();
+        return view('Admin.Guru.edit', compact('guru', 'teachers'));
     }
 
     /**
@@ -75,7 +79,26 @@ class GuruController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'user_id' => 'required|integer',
+            'nip' => 'required|integer',
+            'foto' => 'required|string',
+            'jenis_kelamin' => 'required|string',
+            'alamat' => 'required|string',
+            'no_telepon' => 'required|string',
+        ]);
+        
+        $teacher= [
+            'user_id' => $request->user_id,
+            'nip' => $request->nip,
+            'foto' => $request->foto,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'alamat' => $request->alamat,
+            'no_telepon' => $request->no_telepon,
+        ];
+
+        Guru::where('id', $id)->update($teacher);
+        return redirect()->route('admin.guru.index')->with('success', 'Data guru berhasil diperbarui.');
     }
 
     /**
@@ -83,6 +106,7 @@ class GuruController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Guru::where('id', $id)->delete();
+        return redirect(route('admin.guru.index'))->with('success', 'data successfully deleted!');
     }
 }

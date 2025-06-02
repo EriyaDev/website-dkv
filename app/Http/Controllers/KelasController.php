@@ -47,7 +47,7 @@ class KelasController extends Controller
     public function show($id)
     {
         $kelas = Kelas::where('id', $id)->first();
-        return view('Admin.kelas.view', compact('kelas'));
+        return view('Admin.kelas.show', compact('kelas'));
     }
 
     /**
