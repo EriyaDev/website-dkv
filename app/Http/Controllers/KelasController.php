@@ -12,8 +12,9 @@ class KelasController extends Controller
      */
     public function index()
     {
-        $kelas = Kelas::all();
-        return view('Admin.kelas.index', compact('kelas'));
+        $classes = Kelas::all();
+
+        return view('Admin.Kelas.index', compact('classes'));
     }
 
     /**
@@ -21,7 +22,7 @@ class KelasController extends Controller
      */
     public function create()
     {
-        return view('Admin.kelas.create');
+        return view('Admin.Kelas.create', compact(''));
     }
 
     /**
@@ -30,58 +31,53 @@ class KelasController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama_kelas' => 'required'
+            'nama_kelas' => 'required|string|max:30',
         ]);
 
-        $data = [
+        Kelas::create([
             'nama_kelas' => $request->nama_kelas
-        ];
+        ]);
 
-        Kelas::create($data);
-        return redirect('/admin/kelas')->with('success', 'Kelas berhasil dibuat');
+        return redirect()->route('admin.kelas.index')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(Kelas $kelas)
     {
-        $kelas = Kelas::where('id', $id)->first();
-        return view('Admin.kelas.show', compact('kelas'));
+        return view('Admin.Kelas.show', compact('kelas'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
+    public function edit(Kelas $kelas)
     {
-        $kelas = Kelas::where('id', $id)->first();
-        return view('Admin.kelas.edit', compact('kelas'));
+        return view('Admin.Kelas.edit', compact('kelas'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Kelas $kelas)
     {
         $request->validate([
-            'nama_kelas' => 'required'
+            'nama_kelas' => 'required|string|max:30',
         ]);
 
-        $kelas = [
+        $kelas->update([
             'nama_kelas' => $request->nama_kelas
-        ];
+        ]);
 
-        Kelas::where('id', $id)->update($kelas);
-        return redirect('/admin/kelas')->with('success', 'data successfully updated!');
+        return redirect()->route('admin.kelas.index')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy(Kelas $kelas)
     {
-    Kelas::where('id', $id)->delete();
-    return redirect('/admin/kelas')->with('success', 'data successfully deleted!');
+        $kelas->delete();
     }
 }

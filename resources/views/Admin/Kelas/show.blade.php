@@ -8,29 +8,25 @@
 
 
     <div class="box-dashboard">
-        <form action="" method="POST">
-            @csrf
-
-            @if ($errors->any())
-                <div class="p-3 rounded-md text-red-500 border border-red-500 bg-[#ef44441a] mb-5">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>Error: {{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-            <div class="input-container">
-                <div class="input-group">
-                    <x-label for="nama">Nama Kelas</x-label>
-                    <x-input id="nama" type="text" :disabled="false" name="nama" value="{{ old('') }}"
-                        placeholder="Masukkan nama guru..."></x-input>
-                </div>
+        @if ($errors->any())
+            <div class="p-3 rounded-md text-red-500 border border-red-500 bg-[#ef44441a] mb-5">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>Error: {{ $error }}</li>
+                    @endforeach
+                </ul>
             </div>
-            <div class="flex flex-row gap-3">
-                <a href="" class="button-secondary" type="submit">Cancel</a>
-                <button class="button-primary" type="submit">Confirm</button>
+        @endif
+        <div class="input-container">
+            <div class="input-group">
+                <x-label for="nama">Nama Kelas</x-label>
+                <x-input id="nama" type="text" :disabled="false" name="nama_kelas"
+                    value="{{ old('nama_kelas', $kelas->nama_kelas) }}" placeholder="Masukkan nama guru..."></x-input>
             </div>
-        </form>
+        </div>
+        <div class="flex flex-row gap-3">
+            <a href="" class="button-secondary" type="submit">Cancel</a>
+            <button class="button-primary" type="submit">Confirm</button>
+        </div>
     </div>
 </x-dashboard-layout>
