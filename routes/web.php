@@ -66,5 +66,5 @@ Route::middleware('auth')->group(function () {
 
 // Tak Komenin dulu cik
 Route::get('/guru', function () {
-    return view('Admin.Kelas.index'); // Tak Ganti Cik, Nanti Sesuain aja
+    return view('Admin.Guru.create'); // Tak Ganti Cik, Nanti Sesuain aja
 });
