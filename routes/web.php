@@ -7,6 +7,11 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\GuruController;
+use App\Http\Controllers\JadwalController;
+use App\Http\Controllers\JamPelajaranController;
+use App\Http\Controllers\KelasController;
+use App\Http\Controllers\MapelController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 // Tak Komenin dulu cik
@@ -65,6 +70,12 @@ Route::middleware('auth')->group(function () {
 });
 
 // Tak Komenin dulu cik
-Route::get('/guru', function () {
+Route::get('/dashboard', function () {
     return view('Admin.Guru.create'); // Tak Ganti Cik, Nanti Sesuain aja
 });
+
+Route::resource('kelas', KelasController::class);
+Route::resource('jadwal', JadwalController::class);
+Route::resource('jam-pelajaran', JamPelajaranController::class);
+Route::resource('mapel', MapelController::class);
+Route::resource('guru', GuruController::class);
