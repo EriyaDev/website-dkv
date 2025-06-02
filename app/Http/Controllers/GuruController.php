@@ -52,6 +52,8 @@ class GuruController extends Controller
             'alamat' => $request->alamat,
             'no_telepon' => $request->no_telepon,
         ]);
+
+        return redirect()->route('admin.guru.index')->with('success', 'Data berhasil dibuat!');
     }
 
     /**
@@ -59,7 +61,10 @@ class GuruController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $guru = Guru::findOrFail($id);
+        $teachers = Guru::all();
+
+        return view('Admin.Guru.show', compact('id', 'teachers', 'guru'));
     }
 
     /**
@@ -67,22 +72,46 @@ class GuruController extends Controller
      */
     public function edit(string $id)
     {
-        return view('Admin.Guru.edit', compact('id'));
+        $guru = Guru::findOrFail($id);
+        $teachers = Guru::all();
+
+        return view('Admin.Guru.edit', compact('id', 'teachers', 'guru'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Guru $guru)
     {
-        //
+        $request->validate([
+            'user_id' => 'required|integer',
+            'nip' => 'required|integer',
+            'foto' => 'required|string',
+            'jenis_kelamin' => 'required|string',
+            'alamat' => 'required|string',
+            'no_telepon' => 'required|string',
+        ]);
+
+        $guru->update([
+            'user_id' => $request->user_id,
+            'nip' => $request->nip,
+            'nip' => $request->nip,
+            'foto' => $request->foto,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'alamat' => $request->alamat,
+            'no_telepon' => $request->no_telepon,
+        ]);
+
+        return redirect()->route('admin.guru.index')->with('success', 'Data berhasil dibuat!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Guru $guru)
     {
-        //
+        $guru->delete();
+
+        return redirect()->route('admin.guru.index')->with('success', 'Data berhasil dihapus');
     }
 }

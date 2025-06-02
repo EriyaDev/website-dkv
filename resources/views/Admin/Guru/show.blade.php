@@ -8,49 +8,59 @@
 
 
     <div class="box-dashboard">
-        <form action="" method="POST">
-            @csrf
 
-            @if ($errors->any())
-                <div class="p-3 rounded-md text-red-500 border border-red-500 bg-[#ef44441a] mb-5">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>Error: {{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-            <div class="input-container">
-                <div class="input-group">
-                    <x-label for="nip">NIP</x-label>
-                    <x-input id="nip" type="text" :disabled="true" name="nip" value="{{ old('') }}"
-                        placeholder="Masukkan NIP guru..."></x-input>
-                </div>
-                <div class="input-group">
-                    <x-label for="nama">Nama</x-label>
-                    <x-input id="nama" type="text" :disabled="true" name="nama" value="{{ old('') }}"
-                        placeholder="Masukkan nama guru..."></x-input>
-                </div>
-                <div class="input-group">
-                    <x-label for="jenis_kelamin">Jenis Kelamin</x-label>
-                    <x-select-option name="jenis_kelamin" id="jenis_kelamin" :disabled="true">
-                        <option value="" selected disabled>--Pilih Jenis Kelamin--</option>
-                    </x-select-option>
-                </div>
-                <div class="input-group">
-                    <x-label for="alamat">Alamat</x-label>
-                    <x-input id="alamat" type="text" :disabled="true" name="alamat" value="{{ old('') }}"
-                        placeholder="Masukkan alamat guru..."></x-input>
-                </div>
-                <div class="input-group">
-                    <x-label for="no_telepon">No. Telepon</x-label>
-                    <x-input id="no_telepon" type="tel" :disabled="true" name="no_telepon"
-                        value="{{ old('') }}" placeholder="Masukkan no telepon guru..."></x-input>
-                </div>
+
+        @if ($errors->any())
+            <div class="p-3 rounded-md text-red-500 border border-red-500 bg-[#ef44441a] mb-5">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>Error: {{ $error }}</li>
+                    @endforeach
+                </ul>
             </div>
-            <div class="flex flex-row gap-3">
-                <a href="" class="button-secondary" type="submit">Cancel</a>
+        @endif
+        <div class="input-container">
+            <div class="input-group">
+                <x-label for="nip">NIP</x-label>
+                <x-input id="nip" type="number" :disabled="true" name="nip"
+                    value="{{ old('nip', $guru->nip) }}" placeholder="Masukkan NIP guru..."></x-input>
             </div>
-        </form>
+            <div class="input-group">
+                <x-label for="nama">Nama</x-label>
+                <x-select-option name="user_id" id="nama" :disabled="true">
+                    <option value="" selected disabled>--Pilih Guru--</option>
+                    @foreach ($teachers as $teacher)
+                        <option value="{{ $teacher->id }}">{{ $teacher->name }}</option>
+                    @endforeach
+                </x-select-option>
+            </div>
+            <div class="input-group">
+                <x-label for="jenis_kelamin">Jenis Kelamin</x-label>
+                <x-select-option name="jenis_kelamin" id="jenis_kelamin" :disabled="true">
+                    <option value="" selected disabled>--Pilih Jenis Kelamin--</option>
+                    <option value="Laki-laki">Laki-laki</option>
+                    <option value="Perempuan">Perempuan</option>
+                </x-select-option>
+            </div>
+            <div class="input-group">
+                <x-label for="foto">Foto</x-label>
+                <x-input id="foto" type="file" :disabled="true" name="foto" value=""
+                    placeholder="Masukkan foto guru..."></x-input>
+            </div>
+            <div class="input-group">
+                <x-label for="alamat">Alamat</x-label>
+                <x-input id="alamat" type="text" :disabled="true" name="alamat"
+                    value="{{ old('nip', $guru->alamat) }}" placeholder="Masukkan alamat guru..."></x-input>
+            </div>
+            <div class="input-group">
+                <x-label for="no_telepon">No. Telepon</x-label>
+                <x-input id="no_telepon" type="tel" :disabled="true" name="no_telepon"
+                    value="{{ old('nip', $guru->no_telepon) }}" placeholder="Masukkan no telepon guru..."></x-input>
+            </div>
+        </div>
+        <div class="flex flex-row gap-3">
+            <a href="{{ route('guru.index') }}" class="button-secondary" type="submit">Cancel</a>
+        </div>
+
     </div>
 </x-dashboard-layout>

@@ -36,7 +36,7 @@
                             {{-- Untuk No. TElepon --}}
                             <td class="table-cell w-[20%]">
                                 <div class="flex flex-row gap-3 items-center justify-center">
-                                    <a class="text-blue-500" href="">
+                                    <a class="text-blue-500" href="{{ route('guru.show', $teacher->id) }}">
                                         <i class="text-base ri-eye-line text-text-secondary-color"></i>
                                     </a>
                                     <a class="text-blue-500" href="{{ route('guru.edit', $teacher->id) }}">

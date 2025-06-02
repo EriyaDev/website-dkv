@@ -8,7 +8,7 @@
 
 
     <div class="box-dashboard">
-        <form action="{{ route('guru.update', $id->id) }}" method="POST">
+        <form action="{{ route('guru.update', $guru->id) }}" method="POST">
             @csrf
 
             @if ($errors->any())
@@ -24,7 +24,7 @@
                 <div class="input-group">
                     <x-label for="nip">NIP</x-label>
                     <x-input id="nip" type="number" :disabled="false" name="nip"
-                        value="{{ old('nip', $id->nip) }}" placeholder="Masukkan NIP guru..."></x-input>
+                        value="{{ old('nip', $guru->nip) }}" placeholder="Masukkan NIP guru..."></x-input>
                 </div>
                 <div class="input-group">
                     <x-label for="nama">Nama</x-label>
@@ -51,12 +51,12 @@
                 <div class="input-group">
                     <x-label for="alamat">Alamat</x-label>
                     <x-input id="alamat" type="text" :disabled="false" name="alamat"
-                        value="{{ old('nip', $id->alamat) }}" placeholder="Masukkan alamat guru..."></x-input>
+                        value="{{ old('nip', $guru->alamat) }}" placeholder="Masukkan alamat guru..."></x-input>
                 </div>
                 <div class="input-group">
                     <x-label for="no_telepon">No. Telepon</x-label>
                     <x-input id="no_telepon" type="tel" :disabled="false" name="no_telepon"
-                        value="{{ old('nip', $id->no_telepon) }}" placeholder="Masukkan no telepon guru..."></x-input>
+                        value="{{ old('nip', $guru->no_telepon) }}" placeholder="Masukkan no telepon guru..."></x-input>
                 </div>
             </div>
             <div class="flex flex-row gap-3">
