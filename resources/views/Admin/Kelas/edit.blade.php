@@ -8,7 +8,7 @@
 
 
     <div class="box-dashboard">
-        <form action="" method="POST">
+        <form action="{{ route('admin.kelas.update', $kelas) }}" method="POST">
             @csrf
 
             @if ($errors->any())
@@ -23,7 +23,8 @@
             <div class="input-container">
                 <div class="input-group">
                     <x-label for="nama">Nama Kelas</x-label>
-                    <x-input id="nama" type="text" :disabled="false" name="nama" value="{{ old('') }}"
+                    <x-input id="nama" type="text" :disabled="false" name="nama_kelas"
+                        value="{{ old('nama_kelas', $kelas->nama_kelas) }}"
                         placeholder="Masukkan nama guru..."></x-input>
                 </div>
             </div>
