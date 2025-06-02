@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Mapel;
+use App\Models\Ruang;
 use Illuminate\Http\Request;
 
-class MapelController extends Controller
+class RuangController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $data = Mapel::all();
-        return view('Admin.mapel.index', compact('data'));
+        $data = Ruang::all();
+        return view('Admin.ruang.index', compact('data'));
     }
 
     /**
@@ -21,7 +21,7 @@ class MapelController extends Controller
      */
     public function create()
     {
-        return view('Admin.mapel.create');
+        return view('Admin.ruang.create');
     }
 
     /**
@@ -37,8 +37,8 @@ class MapelController extends Controller
             'nama_mapel' => $request->nama_mapel
         ];
 
-        Mapel::create($data);
-        return redirect('/admin/mapel')->with('success', 'data successfully created');
+        Ruang::create($data);
+        return redirect('/admin/ruang')->with('success', 'data successfully created');
     }
 
     /**
@@ -46,8 +46,8 @@ class MapelController extends Controller
      */
     public function show($id)
     {
-        $data = Mapel::where('id', $id)->first();
-        return view('Admin.mapel.view', compact('data'));
+        $data = Ruang::where('id', $id)->first();
+        return view('Admin.ruang.view', compact('data'));
     }
 
     /**
@@ -55,8 +55,8 @@ class MapelController extends Controller
      */
     public function edit($id)
     {
-        $data = Mapel::where('id', $id)->first();
-        return view('Admin.mapel.edit', compact('data'));
+        $data = Ruang::where('id', $id)->first();
+        return view('Admin.ruang.edit', compact('data'));
     }
 
     /**
@@ -72,8 +72,8 @@ class MapelController extends Controller
             'nama_mapel' => $request->nama_mapel
         ];
 
-        Mapel::where('id', $id)->update($data);
-        return redirect('/admin/mapel')->with('success', 'data successfully updated!');
+        Ruang::where('id', $id)->update($data);
+        return redirect('/admin/ruang')->with('success', 'data successfully updated!');
     }
 
     /**
@@ -81,7 +81,7 @@ class MapelController extends Controller
      */
     public function destroy($id)
     {
-        Mapel::where('id', $id)->delete();
-        return redirect('/admin/mapel')->with('success', 'data successfully deleted!');
+        Ruang::where('id', $id)->delete();
+        return redirect('/admin/ruang')->with('success', 'data successfully deleted!');
     }
 }
