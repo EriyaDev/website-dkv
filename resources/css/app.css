@@ -74,11 +74,11 @@
 }
 
 .button-primary {
-    @apply text-sm py-2 px-6 rounded-md border border-accent-color text-secondary-color bg-accent-color;
+    @apply text-sm py-2 px-6 rounded-md border border-accent-color text-secondary-color bg-accent-color hover:brightness-95;
 }
 
 .button-login {
-    @apply text-base py-3 px-6 rounded-md border border-accent-color text-secondary-color bg-accent-color w-full;
+    @apply text-base py-3 px-6 rounded-md border border-accent-color text-secondary-color bg-accent-color w-full hover:brightness-95;
 }
 
 .button-success {
