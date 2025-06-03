@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('ruangs', function (Blueprint $table) {
             $table->id();
             $table->string('nama_ruang', 50)->unique();
+            $table->string('nama_gedung');
             $table->timestamps();
         });
     }
