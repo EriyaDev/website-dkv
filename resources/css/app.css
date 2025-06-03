@@ -70,7 +70,7 @@
 }
 
 .input-container {
-    @apply grid grid-cols-2 gap-8 mb-8;
+    @apply grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8;
 }
 
 .button-primary {
@@ -117,7 +117,7 @@ nav {
 
 /* Table */
 .thead-cell {
-    @apply px-4 py-2 bg-gray-button-color text-sm font-semibold text-text-primary-color;
+    @apply px-4 py-2 bg-gray-button-color text-sm font-semibold text-text-primary-color text-left;
 }
 
 .table-cell {

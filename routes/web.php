@@ -37,7 +37,9 @@ Route::middleware(['auth', 'GuruMiddleware'])->group(function () {
 Route::prefix('admin')->name('admin.')->middleware(['auth', 'AdminMiddleware'])->group(function () {
     Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
     Route::resource('guru', GuruController::class);
-    Route::resource('kelas', KelasController::class);
+    Route::resource('kelas', KelasController::class)->parameters([
+        'kelas' => 'kelas'
+    ]);
     Route::resource('jadwal', JadwalController::class);
     Route::resource('jam-pelajaran', JamPelajaranController::class);
     Route::resource('mapel', MapelController::class);

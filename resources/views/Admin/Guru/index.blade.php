@@ -34,9 +34,9 @@
                             <td class="table-cell">{{ $teacher->no_telepon }}</td>
                             {{-- <td class="table-cell">{{ implode('-', str_split($teacher->phone_number, 4)) }} </td> --}}
                             {{-- Untuk No. TElepon --}}
-                            <td class="table-cell w-[20%]">
+                            <td class="table-cell w-[20%] !text-center">
                                 <div class="flex flex-row gap-3 items-center justify-center">
-                                    <a class="text-blue-500" href="{{ route('guru.show', $teacher->id) }}">
+                                    <a class="text-blue-500" href="{{ route('admin.guru.show', $teacher->id) }}">
                                         <i class="text-base ri-eye-line text-text-secondary-color"></i>
                                     </a>
                                     <a class="text-blue-500" href="{{ route('admin.guru.edit', $teacher->id) }}">

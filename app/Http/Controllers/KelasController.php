@@ -22,7 +22,7 @@ class KelasController extends Controller
      */
     public function create()
     {
-        return view('Admin.Kelas.create', compact(''));
+        return view('Admin.Kelas.create');
     }
 
     /**

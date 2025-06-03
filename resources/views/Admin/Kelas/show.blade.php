@@ -20,13 +20,12 @@
         <div class="input-container">
             <div class="input-group">
                 <x-label for="nama">Nama Kelas</x-label>
-                <x-input id="nama" type="text" :disabled="false" name="nama_kelas"
+                <x-input id="nama" type="text" :disabled="true" name="nama_kelas"
                     value="{{ old('nama_kelas', $kelas->nama_kelas) }}" placeholder="Masukkan nama guru..."></x-input>
             </div>
         </div>
         <div class="flex flex-row gap-3">
-            <a href="" class="button-secondary" type="submit">Cancel</a>
-            <button class="button-primary" type="submit">Confirm</button>
+            <a href="{{ route('admin.kelas.index') }}" class="button-secondary" type="submit">Cancel</a>
         </div>
     </div>
 </x-dashboard-layout>
