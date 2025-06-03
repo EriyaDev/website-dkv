@@ -26,14 +26,14 @@
 
             <div class="pt-10">
                 <ul class="flex flex-col gap-3">
-                    <x-nav-link href="/admin/dashboard" :active="request()->is('guru')"><x-slot:svg><svg
+                    <x-nav-link href="/admin/dashboard" :active="request()->is('admin/dashboard*')"><x-slot:svg><svg
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                 <path fill="none" stroke="currentColor" stroke-linecap="round"
                                     stroke-linejoin="round" stroke-width="1"
                                     d="M8.557 2.75H4.682A1.93 1.93 0 0 0 2.75 4.682v3.875a1.94 1.94 0 0 0 1.932 1.942h3.875a1.94 1.94 0 0 0 1.942-1.942V4.682A1.94 1.94 0 0 0 8.557 2.75m10.761 0h-3.875a1.94 1.94 0 0 0-1.942 1.932v3.875a1.943 1.943 0 0 0 1.942 1.942h3.875a1.94 1.94 0 0 0 1.932-1.942V4.682a1.93 1.93 0 0 0-1.932-1.932m0 10.75h-3.875a1.94 1.94 0 0 0-1.942 1.933v3.875a1.94 1.94 0 0 0 1.942 1.942h3.875a1.94 1.94 0 0 0 1.932-1.942v-3.875a1.93 1.93 0 0 0-1.932-1.932M8.557 13.5H4.682a1.943 1.943 0 0 0-1.932 1.943v3.875a1.93 1.93 0 0 0 1.932 1.932h3.875a1.94 1.94 0 0 0 1.942-1.932v-3.875a1.94 1.94 0 0 0-1.942-1.942" />
                             </svg></x-slot:svg> Dashboard
                     </x-nav-link>
-                    <x-nav-link href="/admin/timesheet" :active="request()->is('admin/timesheet*')"><x-slot:svg><svg
+                    <x-nav-link href="/admin/jadwal" :active="request()->is('admin/jadwal*')"><x-slot:svg><svg
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                 <path fill="currentColor"
                                     d="M18.436 20.937H5.562a2.5 2.5 0 0 1-2.5-2.5V5.563a2.5 2.5 0 0 1 2.5-2.5h12.874a2.5 2.5 0 0 1 2.5 2.5v12.874a2.5 2.5 0 0 1-2.5 2.5M5.562 4.063a1.5 1.5 0 0 0-1.5 1.5v12.874a1.5 1.5 0 0 0 1.5 1.5h12.874a1.5 1.5 0 0 0 1.5-1.5V5.563a1.5 1.5 0 0 0-1.5-1.5Z" />
@@ -52,14 +52,13 @@
                                         d="M5 5h4l3 3h6a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3m0 1a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h13a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2h-6.41l-3-3z" />
                                 </svg></x-slot:svg> Master Data</x-multi-nav-link>
                         <ul id="dropdown-child-2" class="">
-                            <x-inside-multi-nav-link href="/admin/student"
-                                :active="request()->is('admin/student')">Guru</x-inside-multi-nav-link>
-                            <x-inside-multi-nav-link href="/admin/teacher" :active="request()->is('admin/teacher')">Mata
+                            <x-inside-multi-nav-link href="/admin/guru" :active="request()->is('admin/guru*')">Guru</x-inside-multi-nav-link>
+                            <x-inside-multi-nav-link href="/admin/mapel" :active="request()->is('admin/mapel*')">Mata
                                 Pelajaran</x-inside-multi-nav-link>
-                            <x-inside-multi-nav-link href="/admin/student-class"
-                                :active="request()->is('admin/student-class*')">Ruang</x-inside-multi-nav-link>
-                            <x-inside-multi-nav-link href="/admin/student-class"
-                                :active="request()->is('admin/student-class*')">Kelas</x-inside-multi-nav-link>
+                            <x-inside-multi-nav-link href="/admin/ruang"
+                                :active="request()->is('admin/ruang*')">Ruang</x-inside-multi-nav-link>
+                            <x-inside-multi-nav-link href="/admin/kelas"
+                                :active="request()->is('admin/kelas*')">Kelas</x-inside-multi-nav-link>
 
                         </ul>
                     </div>
