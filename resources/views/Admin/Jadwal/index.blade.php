@@ -35,8 +35,8 @@
                     @foreach ($schedules as $schedule)
                         <tr>
                             <td class="table-cell">{{ $loop->iteration }} </td>
-                            {{-- @dd($schedule->guru) --}}
-                            <td class="table-cell">{{ $schedule->guru }} </td>
+                            {{-- @dd($schedule) --}}
+                            <td class="table-cell">{{ $schedule->guru->user->name }} </td>
                             <td class="table-cell">{{ $schedule->kelas->nama_kelas }}</td>
                             <td class="table-cell">{{ $schedule->mapel->nama_mapel }}</td>
                             <td class="table-cell">{{ $schedule->ruang->nama_ruang }}</td>
@@ -47,10 +47,10 @@
                             {{-- Untuk No. TElepon --}}
                             <td class="table-cell w-[20%] !text-center">
                                 <div class="flex flex-row gap-3 items-center justify-center">
-                                    <a class="text-blue-500" href="{{ route('admin.guru.show', $schedule->id) }}">
+                                    <a class="text-blue-500" href="{{ route('admin.jadwal.show', $jadwal->id) }}">
                                         <i class="text-base ri-eye-line text-text-secondary-color"></i>
                                     </a>
-                                    <a class="text-blue-500" href="{{ route('admin.guru.edit', $schedule->id) }}">
+                                    <a class="text-blue-500" href="{{ route('admin.jadwal.edit', $jadwal->id) }}">
                                         <i class="text-base ri-edit-line text-accent-color"></i>
                                     </a>
                                     <form action="" method="post" onsubmit="confirm('Are you sure?')">

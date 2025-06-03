@@ -18,7 +18,7 @@ class JadwalController extends Controller
      */
     public function index()
     {
-        $schedules = Jadwal::orderBy('id', 'desc')->get();
+        $schedules = Jadwal::orderBy('id', 'desc')->with('guru')->get();
 
         return view('Admin.Jadwal.index', compact('schedules'));
     }
@@ -28,11 +28,13 @@ class JadwalController extends Controller
      */
     public function create()
     {
-        $teachers = User::all();
+        $teachers = Guru::orderBy('id', 'asc')->with('user')->get();
+        // $nama_guru = User::orderBy('id', 'asc')->with('')
         $rooms =  Ruang::all();
         $classes = Kelas::all();
         $mapels = Mapel::all();
         $jamPelajarans = JamPelajaran::all();
+
 
         return view('Admin.Jadwal.create', compact('teachers', 'rooms', 'classes', 'mapels', 'jamPelajarans'));
     }

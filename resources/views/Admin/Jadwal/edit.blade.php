@@ -1,14 +1,16 @@
 <x-dashboard-layout>
     <div class="flex flex-row items-center">
-        <a href="" class="breadcrumbs-inactive">Guru</a>
+        <a href="" class="breadcrumbs-inactive">Jadwal</a>
         <h1 class="breadcrumbs-inactive">/</h1>
         <h1 class="breadcrumbs-active">Edit</h1>
     </div>
 
-    <div class="box-dashboard">
 
-        <form action="{{ route('admin.guru.update', $guru->id) }}" method="POST">
+
+    <div class="box-dashboard">
+        <form action="{{ route('admin.jadwal.update') }}" method="POST">
             @csrf
+            @method('PUT')
 
             @if ($errors->any())
                 <div class="p-3 rounded-md text-red-500 border border-red-500 bg-[#ef44441a] mb-5">
@@ -21,47 +23,72 @@
             @endif
             <div class="input-container">
                 <div class="input-group">
-                    <x-label for="nip">NIP</x-label>
-                    <x-input id="nip" type="number" :disabled="false" :required="true" name="nip"
-                        value="{{ old('nip', $guru->nip) }}" placeholder="Masukkan NIP guru..."></x-input>
-                </div>
-                <div class="input-group">
-                    <x-label for="nama">Nama</x-label>
-                    <x-select-option name="user_id" id="nama" :disabled="false" :required="true">
+                    <x-label for="guru_id">Nama Guru</x-label>
+                    <x-select-option name="guru_id" id="guru_id" :disabled="false" :required="true">
                         <option value="" selected disabled>--Pilih Guru--</option>
                         @foreach ($teachers as $teacher)
-                            <option value="{{ $teacher->id }} ">{{ $teacher->name }}</option>
+                            <option value="{{ $teacher->id }}"
+                                {{ $teacher->id == old('id', $teacher->id) ? 'selected' : '' }}>
+                                {{ $teacher->user->name }}</option>
                         @endforeach
                     </x-select-option>
                 </div>
                 <div class="input-group">
-                    <x-label for="jenis_kelamin">Jenis Kelamin</x-label>
-                    <x-select-option name="jenis_kelamin" id="jenis_kelamin" :disabled="false" :required="true">
-                        <option value="" selected disabled>--Pilih Jenis Kelamin--</option>
-                        <option value="Laki-laki">Laki-laki</option>
-                        <option value="Perempuan">Perempuan</option>
+                    <x-label for="kelas">Kelas</x-label>
+                    <x-select-option name="kelas_id" id="kelas_id" :disabled="false" :required="true">
+                        <option value="" selected disabled>--Pilih Kelas--</option>
+                        @foreach ($classes as $class)
+                            <option value="{{ $class->id }}">{{ $class->nama_kelas }}</option>
+                        @endforeach
                     </x-select-option>
                 </div>
                 <div class="input-group">
-                    <x-label for="foto">Foto</x-label>
-                    <x-input id="foto" type="file" :disabled="false" :required="false" name="foto"
-                        value="" placeholder="Masukkan foto guru..."></x-input>
+                    <x-label for="mapel_id">Mata Pelajaran</x-label>
+                    <x-select-option name="mapel_id" id="mapel_id" :disabled="false" :required="true">
+                        <option value="" selected disabled>--Pilih Mata Pelajaran--</option>
+                        @foreach ($mapels as $mapel)
+                            <option value="{{ $mapel->id }}">{{ $mapel->nama_mapel }}</option>
+                        @endforeach
+                    </x-select-option>
                 </div>
                 <div class="input-group">
-                    <x-label for="alamat">Alamat</x-label>
-                    <x-input id="alamat" type="text" :disabled="false" :required="true" name="alamat"
-                        value="{{ old('alamat', $guru->alamat) }}" placeholder="Masukkan alamat guru..."></x-input>
+                    <x-label for="jam">Jam Pelajaran</x-label>
+                    <x-select-option name="jam_pelajaran_id" id="jam" :disabled="false" :required="true">
+                        <option value="" selected disabled>--Pilih Jam Pelajaran--</option>
+                        @foreach ($jamPelajarans as $jam)
+                            <option value="{{ $jam->id }}">
+                                {{ \Carbon\Carbon::parse($jam->jam_mulai)->format('H:i') }} -
+                                {{ \Carbon\Carbon::parse($jam->jam_selesai)->format('H:i') }}
+                            </option>
+                        @endforeach
+                    </x-select-option>
+                </div>
+                <div class="input-group">
+                    <x-label for="ruang">Ruang</x-label>
+                    <x-select-option name="ruang_id" id="ruang" :disabled="false" :required="true">
+                        <option value="" selected disabled>--Pilih Ruang Kelas--</option>
+                        @foreach ($rooms as $room)
+                            {{-- @dd($rooms) --}}
+                            <option value="{{ $room->id }}">{{ $room->nama_ruang }}</option>
+                        @endforeach
+                    </x-select-option>
+                </div>
+                <div class="input-group">
+                    <x-label for="hari">Hari</x-label>
+                    <x-select-option name="hari" id="hari" :disabled="false" :required="true">
+                        <option value="" selected disabled>--Pilih Hari--</option>
+                        <option value="Senin">Senin</option>
+                        <option value="Selasa">Selasa</option>
+                        <option value="Rabu">Rabu</option>
+                        <option value="Kamis">Kamis</option>
+                        <option value="Jumat">Jumat</option>
+                        <option value="Sabtu">Sabtu</option>
+                    </x-select-option>
+                </div>
 
-                </div>
-                <div class="input-group">
-                    <x-label for="no_telepon">No. Telepon</x-label>
-                    <x-input id="no_telepon" type="tel" :disabled="false" :required="false" name="no_telepon"
-                        value="{{ old('no_telepon', $guru->no_telepon) }}"
-                        placeholder="Masukkan no telepon guru..."></x-input>
-                </div>
             </div>
             <div class="flex flex-row gap-3">
-                <a href="{{ route('admin.guru.index') }}" class="button-secondary" type="submit">Cancel</a>
+                <a href="{{ route('admin.jadwal.index') }}" class="button-secondary" type="submit">Cancel</a>
                 <button class="button-primary" type="submit">Confirm</button>
             </div>
         </form>

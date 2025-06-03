@@ -26,7 +26,7 @@
                     <x-select-option name="guru_id" id="guru_id" :disabled="false" :required="true">
                         <option value="" selected disabled>--Pilih Guru--</option>
                         @foreach ($teachers as $teacher)
-                            <option value="{{ $teacher->id }}">{{ $teacher->name }}</option>
+                            <option value="{{ $teacher->id }}">{{ $teacher->user->name }}</option>
                         @endforeach
                     </x-select-option>
                 </div>
