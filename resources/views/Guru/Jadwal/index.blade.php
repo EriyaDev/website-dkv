@@ -35,7 +35,7 @@
                     @foreach ($schedules as $schedule)
                         <tr>
                             <td class="table-cell">{{ $loop->iteration }} </td>
-                            {{-- @dd($schedule->guru) --}}
+                            @dd($schedule->guru)
                             <td class="table-cell">{{ $schedule->guru }} </td>
                             <td class="table-cell">{{ $schedule->kelas->nama_kelas }}</td>
                             <td class="table-cell">{{ $schedule->mapel->nama_mapel }}</td>

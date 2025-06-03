@@ -45,7 +45,7 @@ class Jadwal extends Model
         return $this->belongsTo(Ruang::class, 'ruang_id');
     }
 
-    public function jamPembelajaran()
+    public function jam_pelajaran()
     {
         return $this->belongsTo(JamPelajaran::class);
     }
