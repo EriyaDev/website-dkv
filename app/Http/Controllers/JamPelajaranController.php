@@ -13,7 +13,7 @@ class JamPelajaranController extends Controller
      */
     public function index()
     {
-        $data = JamPelajaran::all();
+        $data = JamPelajaran::orderBy('jam_pelajaran_ke', 'asc')->get();
         return view('Admin.jam_pelajaran.index', compact('data'));
     }
 
