@@ -12,7 +12,7 @@ class MapelController extends Controller
      */
     public function index()
     {
-        $data = Mapel::all();
+        $data = Mapel::orderBy('id', 'desc')->get();
         return view('Admin.mapel.index', compact('data'));
     }
 

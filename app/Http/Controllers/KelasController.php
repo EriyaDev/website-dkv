@@ -12,7 +12,7 @@ class KelasController extends Controller
      */
     public function index()
     {
-        $classes = Kelas::all();
+        $classes = Kelas::orderBy('id', 'desc')->get();
 
         return view('Admin.Kelas.index', compact('classes'));
     }
@@ -79,5 +79,7 @@ class KelasController extends Controller
     public function destroy(Kelas $kelas)
     {
         $kelas->delete();
+
+        return redirect()->route('admin.kelas.index')->with('success', 'Data berhasil dihapus');
     }
 }

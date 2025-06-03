@@ -12,7 +12,7 @@ class RuangController extends Controller
      */
     public function index()
     {
-        $data = Ruang::all();
+        $data = Ruang::orderBy('id', 'desc')->get();
         return view('Admin.ruang.index', compact('data'));
     }
 

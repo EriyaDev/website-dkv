@@ -14,7 +14,7 @@ class GuruController extends Controller
      */
     public function index()
     {
-        $teachers = Guru::all();
+        $teachers = Guru::orderBy('id', 'desc')->get();
 
         return view('Admin.Guru.index', compact('teachers'));
     }

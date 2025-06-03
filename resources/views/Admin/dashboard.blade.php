@@ -31,7 +31,7 @@
                 </div>
             </div>
             <div class="flex flex-row gap-3">
-                <a href="" class="button-secondary" type="submit">Cancel</a>
+                <a href="{{ route('admin.dashboard') }}" class="button-secondary" type="submit">Cancel</a>
                 <button class="button-primary" type="submit">Confirm</button>
             </div>
         </form>
