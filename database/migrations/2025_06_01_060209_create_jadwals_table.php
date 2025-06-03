@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Guru;
+use App\Models\JamPelajaran;
 use App\Models\Kelas;
 use App\Models\Mapel;
 use App\Models\Ruang;
@@ -25,9 +26,8 @@ return new class extends Migration
             $table->foreignIdFor(Kelas::class);
             $table->foreignIdFor(Mapel::class);
             $table->foreignIdFor(Ruang::class);
+            $table->foreignIdFor(JamPelajaran::class);
             $table->string('hari', 20);
-            $table->foreignId('jam_ke_mulai_id')->constrained('jam_pelajarans')->onDelete('cascade');
-            $table->foreignId('jam_ke_selesai_id')->constrained('jam_pelajarans')->onDelete('cascade');
             $table->timestamps();
         });
     }
