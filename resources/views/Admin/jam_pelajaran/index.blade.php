@@ -10,6 +10,14 @@
                 class="ri-add-line"></i>Archive</a> --}}
     </div>
 
+    @if (Session('success'))
+        <div class="w-full mt-4 mb=2 border border-green-200 rounded-md">
+            <p class="p-3 bg-green-100 text-green-800 font-medium"><i
+                    class="fa-solid fa-circle-check mr-3"></i>{{ Session('success') }}
+            </p>
+        </div>
+    @endif
+
     <div class="box-dashboard">
 
         <div class="w-full overflow-x-auto">
