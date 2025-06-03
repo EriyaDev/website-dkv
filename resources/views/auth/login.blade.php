@@ -11,24 +11,23 @@
 </head>
 
 <body>
-    <div class="flex flex-col items-center justify-center min-h-screen">
-        <div class="p-10 rounded-xl shadow-lg">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRh4S0bP26smizOxv5PatRk2iiNe3WCLzM4A&s"
-                alt="" class="w-24 h-24 mx-auto rounded-full shadow-lg">
-            <h2 class="text-2xl font-bold text-center mb-6">Login</h2>
+    <div class="flex flex-col items-center justify-center min-h-screen bg-primary-color">
+        <div class="p-10 rounded-xl shadow-lg bg-secondary-color w-[32%]">
+            <img src="{{ asset('logo.png') }}" alt="" class="w-24 h-24 object-contain mx-auto mb-1">
+            <h2 class="text-2xl font-medium font-poppins text-center mb-5">Login</h2>
             <form action="{{ route('login') }}" method="POST" class="space-y-4">
                 @csrf
-                <div>
-                    <label for="name" class="text-sm font-medium text-gray-700">Username</label>
-                    <input type="text" name="username" id="username" required
-                        class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                <div class="flex flex-col gap-1">
+                    <label for="name" class="text-lg font-satoshi font-medium">Username</label>
+                    <x-input id="name" type="text" :disabled="false" name="username"
+                        placeholder="Enter your username"></x-input>
                 </div>
 
-                <div>
-                    <label for="password" class="text-sm font-medium text-gray-700">Password</label>
+                <div class="flex flex-col gap-1">
+                    <label for="password" class="text-lg font-satoshi font-medium">Password</label>
                     <div class="relative">
-                        <input type="password" name="password" id="password" required
-                            class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                        <x-input id="password" type="password" :disabled="false" name="password"
+                            placeholder="Enter your password"></x-input>
                         <button type="button" id="togglePassword"
                             class="absolute inset-y-0 right-3 top-2 text-gray-600">
                             <i class="far fa-eye" id="eyeIcon"></i>
@@ -36,14 +35,13 @@
                     </div>
                 </div>
 
-                <button type="submit"
-                    class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-200">
-                    Login
+                <button type="submit" class="button-primary !w-full ">
+                    Sign In
                 </button>
             </form>
             <div class="mt-6 text-center">
-                <p class="text-sm text-gray-600">Don't have an account? <a href="{{ url('register') }}"
-                        class="text-blue-600 hover:underline">Sign up</a></p>
+                <p class="text-sm text-text-primary-color font-poppins">Don't have an account? <a
+                        href="{{ url('register') }}" class="text-accent-color">Sign up</a></p>
             </div>
         </div>
         @if ($errors->any())
