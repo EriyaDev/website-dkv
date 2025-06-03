@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Guru;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class GuruController extends Controller
 {
@@ -36,12 +37,21 @@ class GuruController extends Controller
         // return request()->all();
         $request->validate([
             'user_id' => 'required|integer',
-            'nip' => 'required|integer|unique:gurus,nip',
-            'foto' => 'required|string',
+            'nip' => 'required|integer',
+            'foto' => 'required|image|mimes:jpg,jpeg,png|max:2048',
             'jenis_kelamin' => 'required|string',
             'alamat' => 'required|string',
             'no_telepon' => 'required|string',
         ]);
+
+        if ($request->file('foto')) {
+            $file = $request->file('foto');
+            $name = $file->hashName();
+
+            Storage::putFileAs('foto_guru', $file, $name);
+
+            $request['foto'] = $name;
+        }
 
         Guru::create([
             'user_id' => $request->user_id,
@@ -52,9 +62,9 @@ class GuruController extends Controller
             'no_telepon' => $request->no_telepon,
         ]);
 
-
         return redirect()->route('admin.guru.index')->with('success', 'Data guru berhasil ditambahkan.');
     }
+
 
     /**
      * Display the specified resource.
@@ -86,18 +96,33 @@ class GuruController extends Controller
     {
         $request->validate([
             'user_id' => 'required|integer',
-            'nip' => 'required|integer|unique:gurus,nip,' . $guru->id,
-            'foto' => 'string',
+            'nip' => 'required|integer',
+            'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'jenis_kelamin' => 'required|string',
             'alamat' => 'required|string',
-            'no_telepon' => 'string',
+            'no_telepon' => 'required|string',
         ]);
 
+        // foto lama guru
+        $foto = $guru->foto;
+
+        // Kalau ada file baru diupload, simpan file-nya
+        if ($request->hasFile('foto')) {
+            // Hapus foto lama
+            if ($guru->foto) {
+                Storage::delete('foto_guru/' . $guru->foto);
+            }
+
+            $file = $request->file('foto');
+            $name = $file->hashName();
+            Storage::putFileAs('foto_guru', $file, $name);
+            $foto = $name; // nama file baru
+        }
 
         $guru->update([
             'user_id' => $request->user_id,
             'nip' => $request->nip,
-            'foto' => $request->foto,
+            'foto' => $foto,
             'jenis_kelamin' => $request->jenis_kelamin,
             'alamat' => $request->alamat,
             'no_telepon' => $request->no_telepon,

@@ -18,10 +18,15 @@
                     </ul>
                 </div>
             @endif
-            <div class="input-container !grid-cols-1">
+            <div class="input-container">
                 <div class="input-group">
-                    <x-label for="name">Nama Ruang</x-label>
-                    <x-input id="name" type="text" :disabled="false" name="nama_ruang" value=""
+                    <x-label for="name_ruang">Nama Ruang</x-label>
+                    <x-input id="name_ruang" type="text" :disabled="false" name="nama_ruang" value=""
+                        placeholder="Masukan nama ruang"></x-input>
+                </div>
+                <div class="input-group">
+                    <x-label for="name_gedung">Nama Gedung</x-label>
+                    <x-input id="name_gedung" type="text" :disabled="false" name="nama_gedung" value=""
                         placeholder="Masukan nama ruang"></x-input>
                 </div>
             </div>

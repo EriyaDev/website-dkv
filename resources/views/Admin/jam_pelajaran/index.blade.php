@@ -1,8 +1,8 @@
 <x-dashboard-layout>
 
     <div class="flex flex-row justify-between items-center">
-        <h1 class="page-title">Ruang</h1>
-        <a href="{{ url('admin/ruang/create') }}"
+        <h1 class="page-title">Jam Pelajaran</h1>
+        <a href="{{ url('admin/jam-pelajaran/create') }}"
             class="py-2 px-4 rounded-md bg-blue-600 text-white flex flex-row gap-1 items-center"><i
                 class="ri-add-line"></i></i>Buat Baru</a>
         {{-- <a href="{{ route('member.archive') }}"
@@ -16,25 +16,29 @@
             <table>
                 <thead>
                     <th class="thead-cell rounded-tl-xl">#</th>
-                    <th class="thead-cell">Nama Ruangan</th>
-                    <th class="thead-cell">Nama Gedung</th>
+                    <th class="thead-cell">Jam Pelajaran Ke</th>
+                    <th class="thead-cell">Jam Mulai</th>
+                    <th class="thead-cell">Jam Selesai</th>
                     <th class="thead-cell rounded-tr-xl">Action</th>
                 </thead>
                 <tbody>
                     @foreach ($data as $item)
                         <tr>
                             <td class="table-cell">{{ $loop->iteration }} </td>
-                            <td class="table-cell">{{ $item->nama_ruang }}</td>
-                            <td class="table-cell">{{ $item->nama_gedung }}</td>
+                            <td class="table-cell">{{ $item->jam_pelajaran_ke }}</td>
+                            <td class="table-cell">{{ \Carbon\Carbon::parse($item->jam_mulai)->format('H:i') }}</td>
+                            <td class="table-cell">{{ \Carbon\Carbon::parse($item->jam_selesai)->format('H:i') }}</td>
+                            {{-- Untuk No. TElepon --}}
                             <td class="table-cell w-[20%]">
                                 <div class="flex flex-row gap-3 items-center justify-center">
-                                    <a class="text-blue-500" href="{{ url('admin/ruang/' . $item->id) }}">
+                                    <a class="text-blue-500" href="{{ url('admin/jam-pelajaran/' . $item->id) }}">
                                         <i class="text-base ri-eye-line text-text-secondary-color"></i>
                                     </a>
-                                    <a class="text-blue-500" href="{{ url('admin/ruang/' . $item->id . '/edit') }}">
+                                    <a class="text-blue-500"
+                                        href="{{ url('admin/jam-pelajaran/' . $item->id . '/edit') }}">
                                         <i class="text-base ri-edit-line text-accent-color"></i>
                                     </a>
-                                    <form action="{{ url('admin/ruang/' . $item->id) }}" method="POST"
+                                    <form action="{{ url('admin/jam-pelajaran/' . $item->id) }}" method="POST"
                                         onsubmit="confirm('Are you sure?')">
                                         @csrf
                                         @method('DELETE')
