@@ -22,8 +22,7 @@ class Jadwal extends Model
         'mapel_id',
         'ruang_id',
         'hari',
-        'jam_ke_mulai_id',
-        'jam_ke_selesai_id',
+        'jam_pelajaran_id',
     ];
 
     public function guru()
@@ -46,13 +45,8 @@ class Jadwal extends Model
         return $this->belongsTo(Ruang::class, 'ruang_id');
     }
 
-    public function jamKeMulai()
+    public function jamPembelajaran()
     {
-        return $this->belongsTo(JamPelajaran::class, 'jam_ke_mulai_id', 'id');
-    }
-
-    public function jamKeSelesai()
-    {
-        return $this->belongsTo(JamPelajaran::class, 'jam_ke_selesai_id', 'id');
+        return $this->belongsTo(JamPelajaran::class);
     }
 }

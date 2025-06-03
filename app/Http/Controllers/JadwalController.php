@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Guru;
 use App\Models\Jadwal;
+use App\Models\JamPelajaran;
+use App\Models\Kelas;
+use App\Models\Mapel;
+use App\Models\Ruang;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class JadwalController extends Controller
@@ -22,7 +28,13 @@ class JadwalController extends Controller
      */
     public function create()
     {
-        return view('Admin.Jadwal.create', compact(''));
+        $teachers = User::all();
+        $rooms =  Ruang::all();
+        $classes = Kelas::all();
+        $mapels = Mapel::all();
+        $jamPelajarans = JamPelajaran::all();
+
+        return view('Admin.Jadwal.create', compact('teachers', 'rooms', 'classes', 'mapels', 'jamPelajarans'));
     }
 
     /**
@@ -30,14 +42,14 @@ class JadwalController extends Controller
      */
     public function store(Request $request)
     {
+        // return $request->all();
         $request->validate([
-            'hari' => 'required|string|max:5',
-            'guru_id' => 'required|string|exists:gurus,id',
+            'hari' => 'required|string|max:15',
+            'guru_id' => 'required|string|exists:users,id',
             'kelas_id' => 'required|string|exists:kelass,id',
             'mapel_id' => 'required|string|exists:mapels,id',
-            'ruang' => 'required|string|exists:ruangs,id',
-            'jam_ke_mulai_id' => 'required|string|exists:jam_pelajarans,id',
-            'jam_ke_selesai_id' => 'required|string|exists:jam_pelajarans,id',
+            'ruang_id' => 'required|string|exists:ruangs,id',
+            'jam_pelajaran_id' => 'required|string|exists:jam_pelajarans,id',
         ]);
 
         Jadwal::create([
@@ -45,12 +57,11 @@ class JadwalController extends Controller
             'guru_id' => $request->guru_id,
             'kelas_id' => $request->kelas_id,
             'mapel_id' => $request->mapel_id,
-            'ruang' => $request->ruang,
-            'jam_ke_mulai_id' => $request->jam_ke_mulai_id,
-            'jam_ke_selesai_id' => $request->jam_ke_selesai_id,
+            'jam_pelajaran_id' => $request->jam_pelajaran_id,
+            'ruang_id' => $request->ruang_id,
         ]);
 
-        return redirect()->route('admin.jadwal.create')->with('success', 'Data berhasil dibuat!');
+        return redirect()->route('admin.jadwal.index')->with('success', 'Data berhasil dibuat!');
     }
 
     /**
