@@ -45,7 +45,7 @@
                 </div>
                 <div class="input-group">
                     <x-label for="foto">Foto</x-label>
-                    <x-input id="foto" type="file" :disabled="false" :required="false" name="foto"
+                    <x-input id="foto" name="foto" type="file" :disabled="false" :required="false" name="foto"
                         value="" placeholder="Masukkan foto guru..."></x-input>
                 </div>
                 <div class="input-group">

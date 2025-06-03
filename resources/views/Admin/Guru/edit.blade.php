@@ -9,6 +9,7 @@
 
         <form action="{{ route('admin.guru.update', $guru->id) }}" method="POST">
             @csrf
+            @method('PUT')
 
             @if ($errors->any())
                 <div class="p-3 rounded-md text-red-500 border border-red-500 bg-[#ef44441a] mb-5">
@@ -27,10 +28,10 @@
                 </div>
                 <div class="input-group">
                     <x-label for="nama">Nama</x-label>
-                    <x-select-option name="user_id" id="nama" :disabled="false" :required="true">
+                    <x-select-option name="user_id" id="user_id" :disabled="false" :required="true">
                         <option value="" selected disabled>--Pilih Guru--</option>
                         @foreach ($teachers as $teacher)
-                            <option value="{{ $teacher->id }} ">{{ $teacher->name }}</option>
+                            <option value="{{ $teacher->id }} ">{{ $teacher->user->name }}</option>
                         @endforeach
                     </x-select-option>
                 </div>
@@ -51,7 +52,6 @@
                     <x-label for="alamat">Alamat</x-label>
                     <x-input id="alamat" type="text" :disabled="false" :required="true" name="alamat"
                         value="{{ old('alamat', $guru->alamat) }}" placeholder="Masukkan alamat guru..."></x-input>
-
                 </div>
                 <div class="input-group">
                     <x-label for="no_telepon">No. Telepon</x-label>

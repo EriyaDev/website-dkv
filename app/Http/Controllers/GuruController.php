@@ -38,7 +38,7 @@ class GuruController extends Controller
         $request->validate([
             'user_id' => 'required|integer',
             'nip' => 'required|integer',
-            'foto' => 'required|image|mimes:jpg,jpeg,png|max:2048',
+            'foto' => 'required',
             'jenis_kelamin' => 'required|string',
             'alamat' => 'required|string',
             'no_telepon' => 'required|string',

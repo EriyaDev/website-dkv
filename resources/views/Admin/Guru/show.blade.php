@@ -16,33 +16,32 @@
                     @endforeach
                 </ul>
             </div>
-        @endif
+        @endif  
         <div class="input-container">
             <div class="input-group">
                 <x-label for="nip">NIP</x-label>
-                <x-input id="nip" type="text" :disabled="true" name="nip" value="{{ old('nip') }}"
+                <x-input id="nip" type="text" :disabled="true" name="nip" value="{{ $guru->nip }}"
                     placeholder="Masukkan NIP guru..."></x-input>
             </div>
             <div class="input-group">
                 <x-label for="nama">Nama</x-label>
-                <x-input id="nama" type="text" :disabled="true" name="nama" value="{{ old('nama') }}"
+                <x-input id="name" type="text" :disabled="true" name="name" value="{{ $guru->user->name }}"
                     placeholder="Masukkan nama guru..."></x-input>
             </div>
             <div class="input-group">
                 <x-label for="jenis_kelamin">Jenis Kelamin</x-label>
-                <x-select-option name="jenis_kelamin" id="jenis_kelamin" :disabled="true">
-                    <option value="" selected disabled>--Pilih Jenis Kelamin--</option>
-                </x-select-option>
+                <x-input id="jenis_kelamin" type="text" :disabled="true" name="jenis_kelamin"
+                value="{{ $guru->jenis_kelamin }}" placeholder="Jenis kelamin..."></x-input>
             </div>
             <div class="input-group">
                 <x-label for="alamat">Alamat</x-label>
-                <x-input id="alamat" type="text" :disabled="true" name="alamat" value="{{ old('alamat') }}"
+                <x-input id="alamat" type="text" :disabled="true" name="alamat" value="{{ $guru->alamat }}"
                     placeholder="Masukkan alamat guru..."></x-input>
             </div>
             <div class="input-group">
                 <x-label for="no_telepon">No. Telepon</x-label>
                 <x-input id="no_telepon" type="tel" :disabled="true" name="no_telepon"
-                    value="{{ old('no_telepon') }}" placeholder="Masukkan no telepon guru..."></x-input>
+                    value="{{ $guru->no_telepon }}" placeholder="Masukkan no telepon guru..."></x-input>
             </div>
         </div>
         <div class="flex flex-row gap-3">
