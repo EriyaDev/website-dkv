@@ -2,7 +2,7 @@
 
 <li>
     <button
-        class="{{ $active ? 'bg-accent-secondary-color border-l-4 border-l-accent-color text-text-primary-color' : 'text-text-primary-color bg-secondary-color' }} hover:brightness-95 rounded-md w-full py-3 text-base flex flex-row justify-between items-center pl-10 pr-5"
+        class="{{ $active ? 'bg-primary-color border-l-4 border-l-accent-color text-text-primary-color' : 'text-text-primary-color bg-secondary-color' }} hover:brightness-95 rounded-md w-full py-3 text-base flex flex-row justify-between items-center pl-10 pr-5"
         {{ $attributes }}>
         <span class="flex flex-row items-center gap-2">{{ $svg }} {{ $slot }}</span>
         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="24" viewBox="0 0 12 24" class="rotate-90">

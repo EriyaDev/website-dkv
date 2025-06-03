@@ -24,7 +24,7 @@
                 <div class="input-group">
                     <x-label for="nama">Nama Kelas</x-label>
                     <x-input id="nama" type="text" :disabled="false" name="nama_kelas" value=""
-                        placeholder="Masukkan nama guru..."></x-input>
+                        placeholder="Masukkan nama kelas..."></x-input>
                 </div>
             </div>
             <div class="flex flex-row gap-3">

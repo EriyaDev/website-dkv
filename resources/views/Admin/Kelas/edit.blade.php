@@ -8,8 +8,9 @@
 
 
     <div class="box-dashboard">
-        <form action="{{ route('admin.kelas.update', $kelas) }}" method="POST">
+        <form action="{{ route('admin.kelas.update', $kelas->id) }}" method="POST">
             @csrf
+            @method('PUT')
 
             @if ($errors->any())
                 <div class="p-3 rounded-md text-red-500 border border-red-500 bg-[#ef44441a] mb-5">
@@ -29,7 +30,7 @@
                 </div>
             </div>
             <div class="flex flex-row gap-3">
-                <a href="" class="button-secondary" type="submit">Cancel</a>
+                <a href="{{ route('admin.kelas.index') }}" class="button-secondary" type="submit">Cancel</a>
                 <button class="button-primary" type="submit">Confirm</button>
             </div>
         </form>

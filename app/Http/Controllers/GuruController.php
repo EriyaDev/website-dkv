@@ -36,7 +36,7 @@ class GuruController extends Controller
         // return request()->all();
         $request->validate([
             'user_id' => 'required|integer',
-            'nip' => 'required|integer',
+            'nip' => 'required|integer|unique:gurus,nip',
             'foto' => 'required|string',
             'jenis_kelamin' => 'required|string',
             'alamat' => 'required|string',
@@ -61,7 +61,6 @@ class GuruController extends Controller
      */
     public function show(string $id)
     {
-
         $guru = Guru::findOrFail($id);
         $teachers = Guru::all();
 
@@ -87,11 +86,11 @@ class GuruController extends Controller
     {
         $request->validate([
             'user_id' => 'required|integer',
-            'nip' => 'required|integer',
-            'foto' => 'required|string',
+            'nip' => 'required|integer|unique:gurus,nip,' . $guru->id,
+            'foto' => 'string',
             'jenis_kelamin' => 'required|string',
             'alamat' => 'required|string',
-            'no_telepon' => 'required|string',
+            'no_telepon' => 'string',
         ]);
 
 

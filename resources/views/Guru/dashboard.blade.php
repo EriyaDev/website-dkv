@@ -1,4 +1,4 @@
-<x-dashboard-layout>
+<x-dashboard-layout-for-guru>
     <div class="flex flex-row items-center">
         <a href="" class="breadcrumbs-inactive">USER</a>
         <h1 class="breadcrumbs-inactive">/</h1>
@@ -36,4 +36,4 @@
             </div>
         </form>
     </div>
-</x-dashboard-layout>
+</x-dashboard-layout-for-guru>
