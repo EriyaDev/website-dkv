@@ -30,11 +30,13 @@ class RuangController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama_ruang' => 'required'
+            'nama_ruang' => 'required',
+            'nama_gedung' => 'required'
         ]);
 
         $data = [
-            'nama_ruang' => $request->nama_ruang
+            'nama_ruang' => $request->nama_ruang,
+            'nama_gedung' => $request->nama_gedung
         ];
 
         Ruang::create($data);
@@ -65,11 +67,13 @@ class RuangController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama_ruang' => 'required'
+            'nama_ruang' => 'required',
+            'nama_gedung' => 'required'
         ]);
 
         $data = [
-            'nama_ruang' => $request->nama_ruang
+            'nama_ruang' => $request->nama_ruang,
+            'nama_gedung' => $request->nama_gedung
         ];
 
         Ruang::where('id', $id)->update($data);

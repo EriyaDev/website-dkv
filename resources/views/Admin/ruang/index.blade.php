@@ -17,6 +17,7 @@
                 <thead>
                     <th class="thead-cell rounded-tl-xl">#</th>
                     <th class="thead-cell">Nama Ruangan</th>
+                    <th class="thead-cell">Nama Gedung</th>
                     <th class="thead-cell rounded-tr-xl">Action</th>
                 </thead>
                 <tbody>
@@ -24,6 +25,7 @@
                         <tr>
                             <td class="table-cell">{{ $loop->iteration }} </td>
                             <td class="table-cell">{{ $item->nama_ruang }}</td>
+                            <td class="table-cell">{{ $item->nama_gedung }}</td>
                             <td class="table-cell w-[20%]">
                                 <div class="flex flex-row gap-3 items-center justify-center">
                                     <a class="text-blue-500" href="{{ url('admin/ruang/' . $item->id) }}">

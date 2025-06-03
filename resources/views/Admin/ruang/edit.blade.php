@@ -19,11 +19,16 @@
                 </div>
             @endif
 
-            <div class="input-container !grid-cols-1">
+            <div class="input-container">
                 <div class="input-group">
                     <x-label for="name">Nama Ruang</x-label>
                     <x-input id="name" type="text" :disabled="false" name="nama_ruang"
                         value="{{ $data->nama_ruang }}" placeholder="Enter member name..."></x-input>
+                </div>
+                <div class="input-group">
+                    <x-label for="name_gedung">Nama Gedung</x-label>
+                    <x-input id="name_gedung" type="text" :disabled="false" name="nama_gedung"
+                        value="{{ $data->nama_gedung }}" placeholder="Masukan nama ruang"></x-input>
                 </div>
             </div>
             <div class="flex flex-row gap-3">

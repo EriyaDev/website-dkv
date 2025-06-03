@@ -13,6 +13,7 @@ class Ruang extends Model
     protected $table = 'ruangs';
     protected $fillable = [
         'nama_ruang',
+        'nama_gedung',
     ];
     public function jadwals()
     {
