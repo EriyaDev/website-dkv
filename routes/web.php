@@ -31,6 +31,7 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 // User (GURU) Routes
 Route::middleware(['auth', 'GuruMiddleware'])->group(function () {
     Route::get('/dashboard', [UserController::class, 'index'])->name('dashboard');
+    Route::get('/jadwal', [UserController::class, 'jadwal'])->name('jadwal');
 });
 
 // Admin Routes

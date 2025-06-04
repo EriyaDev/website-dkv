@@ -26,14 +26,14 @@
 
             <div class="pt-10">
                 <ul class="flex flex-col gap-3">
-                    <x-nav-link href="/guru/dashboard" :active="request()->is('guru/dashboard*')"><x-slot:svg><svg
+                    <x-nav-link href="/dashboard" :active="request()->is('/dashboard*')"><x-slot:svg><svg
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                 <path fill="none" stroke="currentColor" stroke-linecap="round"
                                     stroke-linejoin="round" stroke-width="1"
                                     d="M8.557 2.75H4.682A1.93 1.93 0 0 0 2.75 4.682v3.875a1.94 1.94 0 0 0 1.932 1.942h3.875a1.94 1.94 0 0 0 1.942-1.942V4.682A1.94 1.94 0 0 0 8.557 2.75m10.761 0h-3.875a1.94 1.94 0 0 0-1.942 1.932v3.875a1.943 1.943 0 0 0 1.942 1.942h3.875a1.94 1.94 0 0 0 1.932-1.942V4.682a1.93 1.93 0 0 0-1.932-1.932m0 10.75h-3.875a1.94 1.94 0 0 0-1.942 1.933v3.875a1.94 1.94 0 0 0 1.942 1.942h3.875a1.94 1.94 0 0 0 1.932-1.942v-3.875a1.93 1.93 0 0 0-1.932-1.932M8.557 13.5H4.682a1.943 1.943 0 0 0-1.932 1.943v3.875a1.93 1.93 0 0 0 1.932 1.932h3.875a1.94 1.94 0 0 0 1.942-1.932v-3.875a1.94 1.94 0 0 0-1.942-1.942" />
                             </svg></x-slot:svg> Dashboard
                     </x-nav-link>
-                    <x-nav-link href="/guru/jadwal" :active="request()->is('guru/jadwal*')"><x-slot:svg><svg
+                    <x-nav-link href="/jadwal" :active="request()->is('/jadwal*')"><x-slot:svg><svg
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                 <path fill="currentColor"
                                     d="M18.436 20.937H5.562a2.5 2.5 0 0 1-2.5-2.5V5.563a2.5 2.5 0 0 1 2.5-2.5h12.874a2.5 2.5 0 0 1 2.5 2.5v12.874a2.5 2.5 0 0 1-2.5 2.5M5.562 4.063a1.5 1.5 0 0 0-1.5 1.5v12.874a1.5 1.5 0 0 0 1.5 1.5h12.874a1.5 1.5 0 0 0 1.5-1.5V5.563a1.5 1.5 0 0 0-1.5-1.5Z" />
@@ -74,7 +74,7 @@
     </aside>
 
     {{-- Navbar --}}
-    <x-nav>Admin</x-nav>
+    <x-nav>Guru</x-nav>
 
 
     <main class="xl:w-[calc(100vw - 320px)] xl:ml-[320px] h-screen bg-primary-color">

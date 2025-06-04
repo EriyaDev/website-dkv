@@ -1,4 +1,4 @@
-<x-dashboard-layout>
+<x-dashboard-layout-for-guru>
     {{-- @dd($schedules); --}}
     <div class="flex flex-row justify-between items-center">
         <h1 class="page-title">Guru</h1>
@@ -24,7 +24,8 @@
             <table>
                 <thead>
                     <th class="thead-cell rounded-tl-xl">#</th>
-                    <th class="thead-cell">Nama Guru</th>
+                    {{-- <th class="thead-cell">Nama Guru</th> --}}
+                    <th class="thead-cell">Hari</th>
                     <th class="thead-cell">Kelas</th>
                     <th class="thead-cell">Mata Pelajaran</th>
                     <th class="thead-cell">Ruang</th>
@@ -32,25 +33,25 @@
                     <th class="thead-cell rounded-tr-xl">Action</th>
                 </thead>
                 <tbody>
-                    @foreach ($schedules as $schedule)
+                    @foreach ($jadwals as $jadwal)
                         <tr>
                             <td class="table-cell">{{ $loop->iteration }} </td>
-                            @dd($schedule->guru)
-                            <td class="table-cell">{{ $schedule->guru }} </td>
-                            <td class="table-cell">{{ $schedule->kelas->nama_kelas }}</td>
-                            <td class="table-cell">{{ $schedule->mapel->nama_mapel }}</td>
-                            <td class="table-cell">{{ $schedule->ruang->nama_ruang }}</td>
+                            {{-- <td class="table-cell">{{ $jadwal->guru->nama_guru }} </td> --}}
+                            <td class="table-cell">{{ $jadwal->hari }}</td>
+                            <td class="table-cell">{{ $jadwal->kelas->nama_kelas }}</td>
+                            <td class="table-cell">{{ $jadwal->mapel->nama_mapel }}</td>
+                            <td class="table-cell">{{ $jadwal->ruang->nama_ruang }}</td>
                             <td class="table-cell">
-                                {{ \Carbon\Carbon::parse($schedule->jam_pelajaran->jam_mulai)->format('H:i') }} -
-                                {{ \Carbon\Carbon::parse($schedule->jam_pelajaran->jam_selesai)->format('H:i') }} </td>
-                            {{-- <td class="table-cell">{{ implode('-', str_split($schedule->phone_number, 4)) }} </td> --}}
+                                {{ \Carbon\Carbon::parse($jadwal->jam_pelajaran->jam_mulai)->format('H:i') }} -
+                                {{ \Carbon\Carbon::parse($jadwal->jam_pelajaran->jam_selesai)->format('H:i') }} </td>
+                            {{-- <td class="table-cell">{{ implode('-', str_split($jadwal->phone_number, 4)) }} </td> --}}
                             {{-- Untuk No. TElepon --}}
                             <td class="table-cell w-[20%] !text-center">
                                 <div class="flex flex-row gap-3 items-center justify-center">
-                                    <a class="text-blue-500" href="{{ route('admin.guru.show', $schedule->id) }}">
+                                    <a class="text-blue-500" href="{{ route('admin.guru.show', $jadwal->id) }}">
                                         <i class="text-base ri-eye-line text-text-secondary-color"></i>
                                     </a>
-                                    <a class="text-blue-500" href="{{ route('admin.guru.edit', $schedule->id) }}">
+                                    <a class="text-blue-500" href="{{ route('admin.guru.edit', $jadwal->id) }}">
                                         <i class="text-base ri-edit-line text-accent-color"></i>
                                     </a>
                                     <form action="" method="post" onsubmit="confirm('Are you sure?')">
@@ -66,11 +67,11 @@
                 </tbody>
             </table>
 
-            @if ($schedules->isEmpty())
+            @if ($jadwals->isEmpty())
                 <div class="w-full flex justify-center p-2">
                     <p class="font-satoshi text-text-primary-color">Looks like there's nothing here yet.</p>
                 </div>
             @endif
         </div>
     </div>
-</x-dashboard-layout>
+</x-dashboard-layout-for-guru>
