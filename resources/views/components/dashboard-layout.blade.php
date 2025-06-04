@@ -60,6 +60,8 @@
                                 :active="request()->is('admin/ruang*')">Ruang</x-inside-multi-nav-link>
                             <x-inside-multi-nav-link href="/admin/kelas"
                                 :active="request()->is('admin/kelas*')">Kelas</x-inside-multi-nav-link>
+                            <x-inside-multi-nav-link href="/admin/jam-pelajaran" :active="request()->is('admin/jam-pelajaran*')">Jam
+                                Pelajaran</x-inside-multi-nav-link>
 
                         </ul>
                     </div>
