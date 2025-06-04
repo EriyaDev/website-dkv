@@ -26,6 +26,7 @@
                     <th class="thead-cell rounded-tl-xl">#</th>
                     <th class="thead-cell">Nama Guru</th>
                     <th class="thead-cell">Kelas</th>
+                    <th class="thead-cell">Hari</th>
                     <th class="thead-cell">Mata Pelajaran</th>
                     <th class="thead-cell">Ruang</th>
                     <th class="thead-cell">Jam Pelajaran</th>
@@ -38,6 +39,7 @@
                             {{-- @dd($schedule) --}}
                             <td class="table-cell">{{ $schedule->guru->user->name }} </td>
                             <td class="table-cell">{{ $schedule->kelas->nama_kelas }}</td>
+                            <td class="table-cell">{{ $schedule->hari }}</td>
                             <td class="table-cell">{{ $schedule->mapel->nama_mapel }}</td>
                             <td class="table-cell">{{ $schedule->ruang->nama_ruang }}</td>
                             <td class="table-cell">
@@ -47,13 +49,14 @@
                             {{-- Untuk No. TElepon --}}
                             <td class="table-cell w-[20%] !text-center">
                                 <div class="flex flex-row gap-3 items-center justify-center">
-                                    <a class="text-blue-500" href="{{ route('admin.jadwal.show', $jadwal->id) }}">
+                                    <a class="text-blue-500" href="{{ route('admin.jadwal.show', $schedule->id) }}">
                                         <i class="text-base ri-eye-line text-text-secondary-color"></i>
                                     </a>
-                                    <a class="text-blue-500" href="{{ route('admin.jadwal.edit', $jadwal->id) }}">
+                                    <a class="text-blue-500" href="{{ route('admin.jadwal.edit', $schedule->id) }}">
                                         <i class="text-base ri-edit-line text-accent-color"></i>
                                     </a>
-                                    <form action="" method="post" onsubmit="confirm('Are you sure?')">
+                                    <form action="{{ route('admin.jadwal.destroy', $schedule->id) }}" method="post"
+                                        onsubmit="return confirm('Are you sure?')">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit"><i

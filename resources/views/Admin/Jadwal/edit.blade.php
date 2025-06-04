@@ -5,10 +5,10 @@
         <h1 class="breadcrumbs-active">Edit</h1>
     </div>
 
-
+    {{-- @dd($jadwal); --}}
 
     <div class="box-dashboard">
-        <form action="{{ route('admin.jadwal.update') }}" method="POST">
+        <form action="{{ route('admin.jadwal.update', $jadwal->id) }}" method="POST">
             @csrf
             @method('PUT')
 
@@ -27,8 +27,7 @@
                     <x-select-option name="guru_id" id="guru_id" :disabled="false" :required="true">
                         <option value="" selected disabled>--Pilih Guru--</option>
                         @foreach ($teachers as $teacher)
-                            <option value="{{ $teacher->id }}"
-                                {{ $teacher->id == old('id', $teacher->id) ? 'selected' : '' }}>
+                            <option value="{{ $teacher->id }}" @if (old('guru_id', $teacher->id) == $teacher->id) selected @endif>
                                 {{ $teacher->user->name }}</option>
                         @endforeach
                     </x-select-option>
@@ -38,7 +37,8 @@
                     <x-select-option name="kelas_id" id="kelas_id" :disabled="false" :required="true">
                         <option value="" selected disabled>--Pilih Kelas--</option>
                         @foreach ($classes as $class)
-                            <option value="{{ $class->id }}">{{ $class->nama_kelas }}</option>
+                            <option value="{{ $class->id }}" @if (old('kelas_id', $class->id) == $class->id) selected @endif>
+                                {{ $class->nama_kelas }}</option>
                         @endforeach
                     </x-select-option>
                 </div>
@@ -47,7 +47,8 @@
                     <x-select-option name="mapel_id" id="mapel_id" :disabled="false" :required="true">
                         <option value="" selected disabled>--Pilih Mata Pelajaran--</option>
                         @foreach ($mapels as $mapel)
-                            <option value="{{ $mapel->id }}">{{ $mapel->nama_mapel }}</option>
+                            <option value="{{ $mapel->id }}" @if (old('mapel_id', $mapel->id) == $mapel->id) selected @endif>
+                                {{ $mapel->nama_mapel }}</option>
                         @endforeach
                     </x-select-option>
                 </div>
@@ -56,7 +57,7 @@
                     <x-select-option name="jam_pelajaran_id" id="jam" :disabled="false" :required="true">
                         <option value="" selected disabled>--Pilih Jam Pelajaran--</option>
                         @foreach ($jamPelajarans as $jam)
-                            <option value="{{ $jam->id }}">
+                            <option value="{{ $jam->id }}" @if (old('jam_pelajaran_id', $jam->id) == $jam->id) selected @endif>
                                 {{ \Carbon\Carbon::parse($jam->jam_mulai)->format('H:i') }} -
                                 {{ \Carbon\Carbon::parse($jam->jam_selesai)->format('H:i') }}
                             </option>
@@ -69,7 +70,8 @@
                         <option value="" selected disabled>--Pilih Ruang Kelas--</option>
                         @foreach ($rooms as $room)
                             {{-- @dd($rooms) --}}
-                            <option value="{{ $room->id }}">{{ $room->nama_ruang }}</option>
+                            <option value="{{ $room->id }}" @if (old('ruang_id', $room->id) == $room->id) selected @endif>
+                                {{ $room->nama_ruang }}</option>
                         @endforeach
                     </x-select-option>
                 </div>
@@ -77,12 +79,12 @@
                     <x-label for="hari">Hari</x-label>
                     <x-select-option name="hari" id="hari" :disabled="false" :required="true">
                         <option value="" selected disabled>--Pilih Hari--</option>
-                        <option value="Senin">Senin</option>
-                        <option value="Selasa">Selasa</option>
-                        <option value="Rabu">Rabu</option>
-                        <option value="Kamis">Kamis</option>
-                        <option value="Jumat">Jumat</option>
-                        <option value="Sabtu">Sabtu</option>
+                        <option value="Senin" @if (old('hari', $jadwal->hari) == 'Senin') selected @endif>Senin</option>
+                        <option value="Selasa" @if (old('hari', $jadwal->hari) == 'Selasa') selected @endif>Selasa</option>
+                        <option value="Rabu" @if (old('hari', $jadwal->hari) == 'Rabu') selected @endif>Rabu</option>
+                        <option value="Kamis" @if (old('hari', $jadwal->hari) == 'Kamis') selected @endif>Kamis</option>
+                        <option value="Jumat" @if (old('hari', $jadwal->hari) == 'Jumat') selected @endif>Jumat</option>
+                        <option value="Sabtu" @if (old('hari', $jadwal->hari) == 'Sabtu') selected @endif>Sabtu</option>
                     </x-select-option>
                 </div>
 
