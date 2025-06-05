@@ -25,7 +25,7 @@
 
                 <div class="flex flex-col gap-1">
                     <label for="name" class="text-lg font-satoshi font-medium">Username</label>
-                    <x-input id="name" type="text" :disabled="false" name="username"
+                    <x-input id="username" type="text" :disabled="false" name="username"
                         placeholder="Enter your username"></x-input>
                 </div>
 

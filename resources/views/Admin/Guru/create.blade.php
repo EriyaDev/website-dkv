@@ -8,7 +8,7 @@
 
 
     <div class="box-dashboard">
-        <form action="{{ route('admin.guru.store') }}" method="POST">
+        <form action="{{ route('admin.guru.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
             @if ($errors->any())
@@ -45,7 +45,7 @@
                 </div>
                 <div class="input-group">
                     <x-label for="foto">Foto</x-label>
-                    <x-input id="foto" name="foto" type="file" :disabled="false" :required="false" name="foto"
+                    <x-input id="foto" name="foto" type="file" :disabled="false" :required="false"
                         value="" placeholder="Masukkan foto guru..."></x-input>
                 </div>
                 <div class="input-group">

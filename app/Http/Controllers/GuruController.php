@@ -24,7 +24,7 @@ class GuruController extends Controller
      */
     public function create()
     {
-        $teachers = User::all();
+        $teachers = User::with('guru')->where('role', 'guru')->get();
 
         return view('Admin.Guru.create', compact('teachers'));
     }
@@ -37,7 +37,7 @@ class GuruController extends Controller
         // return request()->all();
         $request->validate([
             'user_id' => 'required|integer',
-            'nip' => 'required|integer',
+            'nip' => 'required|string',
             'foto' => 'required',
             'jenis_kelamin' => 'required|string',
             'alamat' => 'required|string',
@@ -56,7 +56,7 @@ class GuruController extends Controller
         Guru::create([
             'user_id' => $request->user_id,
             'nip' => $request->nip,
-            'foto' => $request->foto,
+            'foto' => $name,
             'jenis_kelamin' => $request->jenis_kelamin,
             'alamat' => $request->alamat,
             'no_telepon' => $request->no_telepon,
@@ -96,15 +96,12 @@ class GuruController extends Controller
     {
         $request->validate([
             'user_id' => 'required|integer',
-            'nip' => 'required|integer',
+            'nip' => 'required|string',
             'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'jenis_kelamin' => 'required|string',
             'alamat' => 'required|string',
             'no_telepon' => 'required|string',
         ]);
-
-        // foto lama guru
-        $foto = $guru->foto;
 
         // Kalau ada file baru diupload, simpan file-nya
         if ($request->hasFile('foto')) {

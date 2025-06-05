@@ -9,13 +9,16 @@ class UserController extends Controller
 {
     function index()
     {
-        return view('Guru.dashboard');
+        $user = auth()->user();
+        $guru = $user->guru;
+        return view('Guru.dashboard', compact('guru'));
     }
 
     public function jadwal()
     {
-        $guru = auth()->user();
-        $jadwals = Jadwal::where('guru_id', $guru->id)
+        $user = auth()->user();
+        $guru = $user->guru;
+        $jadwals = Jadwal::where('guru_id', $user->id)
             ->with(['kelas','guru', 'mapel', 'ruang', 'jam_pelajaran'])
             ->get();
 

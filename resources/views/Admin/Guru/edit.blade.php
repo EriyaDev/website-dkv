@@ -7,7 +7,7 @@
 
     <div class="box-dashboard">
 
-        <form action="{{ route('admin.guru.update', $guru->id) }}" method="POST">
+        <form action="{{ route('admin.guru.update', $guru->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
@@ -27,13 +27,9 @@
                         value="{{ old('nip', $guru->nip) }}" placeholder="Masukkan NIP guru..."></x-input>
                 </div>
                 <div class="input-group">
-                    <x-label for="nama">Nama</x-label>
-                    <x-select-option name="user_id" id="user_id" :disabled="false" :required="true">
-                        <option value="" selected disabled>--Pilih Guru--</option>
-                        @foreach ($teachers as $teacher)
-                            <option value="{{ $teacher->id }} ">{{ $teacher->user->name }}</option>
-                        @endforeach
-                    </x-select-option>
+                    <x-label for="name">Nama</x-label>
+                    <x-input id="name" type="text" :disabled="false" :required="true" name="name"
+                        value="{{ old('name', $guru->user->name) }}" placeholder="Masukkan Nama guru..."></x-input>
                 </div>
                 <div class="input-group">
                     <x-label for="jenis_kelamin">Jenis Kelamin</x-label>

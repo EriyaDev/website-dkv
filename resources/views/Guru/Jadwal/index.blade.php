@@ -2,12 +2,6 @@
     {{-- @dd($schedules); --}}
     <div class="flex flex-row justify-between items-center">
         <h1 class="page-title">Guru</h1>
-        <a href="{{ route('admin.jadwal.create') }}"
-            class="py-2 px-4 rounded-md bg-accent-color text-white flex flex-row gap-1 items-center"><i
-                class="ri-add-line"></i></i>Buat Baru</a>
-        {{-- <a href="{{ route('member.archive') }}"
-            class="py-2 px-4 rounded-md bg-blue-600 text-white flex flex-row gap-1 items-center"><i
-                class="ri-add-line"></i>Archive</a> --}}
     </div>
 
     @if (Session('success'))
@@ -30,7 +24,6 @@
                     <th class="thead-cell">Mata Pelajaran</th>
                     <th class="thead-cell">Ruang</th>
                     <th class="thead-cell">Jam Pelajaran</th>
-                    <th class="thead-cell rounded-tr-xl">Action</th>
                 </thead>
                 <tbody>
                     @foreach ($jadwals as $jadwal)
@@ -46,22 +39,6 @@
                                 {{ \Carbon\Carbon::parse($jadwal->jam_pelajaran->jam_selesai)->format('H:i') }} </td>
                             {{-- <td class="table-cell">{{ implode('-', str_split($jadwal->phone_number, 4)) }} </td> --}}
                             {{-- Untuk No. TElepon --}}
-                            <td class="table-cell w-[20%] !text-center">
-                                <div class="flex flex-row gap-3 items-center justify-center">
-                                    <a class="text-blue-500" href="{{ route('admin.guru.show', $jadwal->id) }}">
-                                        <i class="text-base ri-eye-line text-text-secondary-color"></i>
-                                    </a>
-                                    <a class="text-blue-500" href="{{ route('admin.guru.edit', $jadwal->id) }}">
-                                        <i class="text-base ri-edit-line text-accent-color"></i>
-                                    </a>
-                                    <form action="" method="post" onsubmit="confirm('Are you sure?')">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit"><i
-                                                class="text-base ri-delete-bin-line text-red-500"></i></button>
-                                    </form>
-                                </div>
-                            </td>
                         </tr>
                     @endforeach
                 </tbody>
