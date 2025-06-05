@@ -12,7 +12,9 @@ use App\Http\Controllers\MapelController;
 use App\Http\Controllers\RuangController;
 
 // Tak Komenin dulu cik
-Route::get('/', [AuthController::class, 'loginForm'])->name('login');
+Route::get('/', function () {
+    return redirect()->route('login');
+});
 
 // Auth Routes
 Route::middleware(['guest'])->group(function () {

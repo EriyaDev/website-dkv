@@ -9,6 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
     <link rel="stylesheet" href=
 "https://cdnjs.cloudflare.com/ajax/libs/chosen/1.4.2/chosen.min.css" />
     @vite('resources/css/app.css')
@@ -113,6 +114,8 @@
     <script src="{{ asset('scripts/responsive-sidebar.js') }}"></script>
     <script src="{{ asset('scripts/script.js') }}"></script>
     <script src="{{ asset('scripts/sweetalert.js') }}"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
 
 </body>
 

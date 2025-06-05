@@ -22,6 +22,8 @@
                 {{-- <img src="{{ asset('assets/images/logo/AbsenIn.svg') }}" alt="" class="mx-auto"> --}}
                 {{-- <img src="https://preview.redd.it/dapet-thr-dari-rdat-v0-isx6gv31swsc1.jpeg?auto=webp&s=5e50c4f78abfd7768e9b4f01e8e4f3f27d47c7e4"
                     alt="" class="mx-auto"> --}}
+                <img src="{{ asset('logo.png') }}" alt="" class="w-24 h-24 object-contain mx-auto mb-1">
+
             </div>
 
             <div class="pt-10">

@@ -183,3 +183,15 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .label-text {
     @apply text-sm  text-inactive-color font-normal text-left;
 }
+
+.card-dashboard {
+    @apply bg-secondary-color border grid grid-cols-1 gap-3 border-border-color p-3 rounded-xl mt-2 overflow-x-auto;
+}
+
+.card-text-inactive {
+    @apply text-inactive-color font-satoshi;
+}
+
+.card-text-active {
+    @apply text-text-primary-color font-satoshi text-2xl font-medium;
+}
