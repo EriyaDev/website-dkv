@@ -3,7 +3,7 @@
     <div class="flex flex-row justify-between items-center">
         <h1 class="page-title">Jam Pelajaran</h1>
         <a href="{{ url('admin/jam-pelajaran/create') }}"
-            class="py-2 px-4 rounded-md bg-blue-600 text-white flex flex-row gap-1 items-center"><i
+            class="py-2 px-4 rounded-md bg-accent-color text-white flex flex-row gap-1 items-center"><i
                 class="ri-add-line"></i></i>Buat Baru</a>
         {{-- <a href="{{ route('member.archive') }}"
             class="py-2 px-4 rounded-md bg-blue-600 text-white flex flex-row gap-1 items-center"><i
