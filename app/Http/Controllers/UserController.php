@@ -16,13 +16,14 @@ class UserController extends Controller
         $user = auth()->user();
         $guru = $user->guru;
 
+        // return $guru;
         // $senin = Jadwal::all();
-        $senin = Jadwal::where('hari', 'Senin')->orderBy('id', 'asc')->get();
-        $selasa = Jadwal::where('hari', 'Selasa')->orderBy('id', 'asc')->get();
-        $rabu = Jadwal::where('hari', 'Rabu')->orderBy('id', 'asc')->get();
-        $kamis = Jadwal::where('hari', 'Kamis')->orderBy('id', 'asc')->get();
-        $jumat = Jadwal::where('hari', 'Jumat')->orderBy('id', 'asc')->get();
-        $sabtu = Jadwal::where('hari', 'Sabtu')->orderBy('id', 'asc')->get();
+        $senin = Jadwal::where('hari', 'Senin')->where('guru_id', $guru->id)->orderBy('id', 'asc')->get();
+        $selasa = Jadwal::where('hari', 'Selasa')->where('guru_id', $guru->id)->orderBy('id', 'asc')->get();
+        $rabu = Jadwal::where('hari', 'Rabu')->where('guru_id', $guru->id)->orderBy('id', 'asc')->get();
+        $kamis = Jadwal::where('hari', 'Kamis')->where('guru_id', $guru->id)->orderBy('id', 'asc')->get();
+        $jumat = Jadwal::where('hari', 'Jumat')->where('guru_id', $guru->id)->orderBy('id', 'asc')->get();
+        $sabtu = Jadwal::where('hari', 'Sabtu')->where('guru_id', $guru->id)->orderBy('id', 'asc')->get();
 
         // return $selasa;
         return view('Guru.dashboard', compact('senin', 'selasa', 'rabu', 'kamis', 'jumat', 'sabtu', 'guru', 'user'));
