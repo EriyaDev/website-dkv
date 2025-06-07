@@ -35,10 +35,10 @@ class UserController extends Controller
     {
         $user = auth()->user();
         $guru = $user->guru;
-        $jadwals = Jadwal::where('guru_id', $user->id)
+        $jadwals = Jadwal::where('guru_id', $guru->id)
             ->with(['kelas', 'guru', 'mapel', 'ruang', 'jam_pelajaran'])
             ->get();
 
-        return view('Guru.jadwal.index', compact('jadwals'));
+        return view('Guru.Jadwal.index', compact('jadwals'));
     }
 }

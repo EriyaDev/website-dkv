@@ -1,7 +1,7 @@
 <x-dashboard-layout>
     {{-- @dd($schedules); --}}
     <div class="flex flex-row justify-between items-center">
-        <h1 class="page-title">Guru</h1>
+        <h1 class="page-title">Jadwal</h1>
         <a href="{{ route('admin.jadwal.create') }}"
             class="py-2 px-4 rounded-md bg-accent-color text-white flex flex-row gap-1 items-center"><i
                 class="ri-add-line"></i></i>Buat Baru</a>

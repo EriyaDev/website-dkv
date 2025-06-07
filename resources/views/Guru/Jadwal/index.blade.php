@@ -1,7 +1,7 @@
 <x-dashboard-layout-for-guru>
     {{-- @dd($schedules); --}}
     <div class="flex flex-row justify-between items-center">
-        <h1 class="page-title">Guru</h1>
+        <h1 class="page-title">Jadwal Mengajar</h1>
     </div>
 
     @if (Session('success'))
@@ -18,7 +18,7 @@
             <table>
                 <thead>
                     <th class="thead-cell rounded-tl-xl">#</th>
-                    {{-- <th class="thead-cell">Nama Guru</th> --}}
+                    <th class="thead-cell">Nama Guru</th>
                     <th class="thead-cell">Hari</th>
                     <th class="thead-cell">Kelas</th>
                     <th class="thead-cell">Mata Pelajaran</th>
@@ -28,8 +28,9 @@
                 <tbody>
                     @foreach ($jadwals as $jadwal)
                         <tr>
+                            {{-- @dd($jadwal->guru->user) --}}
                             <td class="table-cell">{{ $loop->iteration }} </td>
-                            {{-- <td class="table-cell">{{ $jadwal->guru->nama_guru }} </td> --}}
+                            <td class="table-cell">{{ $jadwal->guru->user->name }} </td>
                             <td class="table-cell">{{ $jadwal->hari }}</td>
                             <td class="table-cell">{{ $jadwal->kelas->nama_kelas }}</td>
                             <td class="table-cell">{{ $jadwal->mapel->nama_mapel }}</td>
