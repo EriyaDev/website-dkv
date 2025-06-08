@@ -42,7 +42,7 @@
                                         <i class="text-base ri-edit-line text-accent-color"></i>
                                     </a>
                                     <form action="{{ url('admin/mapel/' . $item->id) }}" method="POST"
-                                        onsubmit="confirm('Are you sure?')">
+                                        onsubmit="return confirm('Are you sure?')">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit"><i

@@ -50,7 +50,8 @@
                                     <a class="text-blue-500" href="{{ route('admin.guru.edit', $teacher->id) }}">
                                         <i class="text-base ri-edit-line text-accent-color"></i>
                                     </a>
-                                    <form action="{{ route('admin.guru.destroy', $teacher->id) }}" method="post" onsubmit="confirm('Are you sure?')">
+                                    <form action="{{ route('admin.guru.destroy', $teacher->id) }}" method="post"
+                                        onsubmit="return confirm('Are you sure?')">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit"><i

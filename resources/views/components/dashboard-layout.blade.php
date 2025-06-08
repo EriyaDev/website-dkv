@@ -101,7 +101,7 @@
 
 
     <main class="xl:w-[calc(100vw - 320px)] xl:ml-[320px] h-screen bg-primary-color">
-        <div class="px-14 py-24">
+        <div class="lg:px-14 px-5 py-24">
             {{ $slot }}
         </div>
     </main>
