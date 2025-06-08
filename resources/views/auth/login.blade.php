@@ -12,7 +12,7 @@
 
 <body>
     <div class="flex flex-col items-center justify-center min-h-screen bg-primary-color">
-        <div class="p-10 rounded-xl shadow-lg bg-secondary-color w-72 sm:w-96 md:w-[420px]">
+        <div class="p-10 rounded-xl shadow-lg bg-secondary-color w-[90%] sm:w-96 md:w-[420px]">
             <img src="{{ asset('logo.png') }}" alt="" class="w-24 h-24 object-contain mx-auto mb-1">
             <h2 class="text-2xl font-medium font-poppins text-center mb-5">Login</h2>
             <form action="{{ route('login') }}" method="POST" class="space-y-4">
@@ -45,7 +45,7 @@
             </div>
         </div>
         @if ($errors->any())
-            <div class="mt-5 w-72 sm:w-96 md:w-[420px] bg-red-500 text-sm text-white text-center rounded-lg p-4">
+            <div class="mt-5 w-[90%] sm:w-96 md:w-[420px] bg-red-500 text-sm text-white text-center rounded-lg p-4">
                 <span class="font-bold">
                     @foreach ($errors->all() as $error)
                         <p>{{ $error }}</p>
