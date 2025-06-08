@@ -12,7 +12,7 @@
 
 <body>
     <div class="flex flex-col items-center justify-center min-h-screen py-2 bg-primary-color">
-        <div class="p-5 sm:p-10 rounded-xl shadow-lg bg-secondary-color w-80 sm:w-96 md:w-[420px]">
+        <div class="p-5 sm:p-10 rounded-xl shadow-lg bg-secondary-color w-72 sm:w-96 md:w-[420px]">
             <img src="{{ asset('logo.png') }}" alt="" class="w-24 h-24 object-contain mx-auto mb-1">
             <h2 class="text-2xl font-medium font-poppins text-center mb-5">Register</h2>
             <form action="{{ route('register') }}" method="POST" class="space-y-4">
