@@ -30,7 +30,6 @@ class AuthController extends Controller
         ];
 
         if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
 
             if (Auth::user()->role === 'admin') {
                 return redirect()->intended(route('admin.dashboard'));
@@ -74,7 +73,6 @@ class AuthController extends Controller
         ]);
 
         Auth::login($user);
-        event(new Registered($user));
 
         return redirect('/dashboard')->with('success', 'Registrasi berhasil! Selamat datang, ' . $user->name . '.');
     }
@@ -83,9 +81,6 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         Auth::logout();
-
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
 
         return redirect('/login');
     }
