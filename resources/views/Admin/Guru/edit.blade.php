@@ -27,16 +27,21 @@
                         value="{{ old('nip', $guru->nip) }}" placeholder="Masukkan NIP guru..."></x-input>
                 </div>
                 <div class="input-group">
-                    <x-label for="name">Nama</x-label>
-                    <x-input id="name" type="text" :disabled="false" :required="true" name="name"
-                        value="{{ old('name', $guru->user->name) }}" placeholder="Masukkan Nama guru..."></x-input>
+                    <x-label for="nama">Nama</x-label>
+                    <x-select-option name="user_id" id="nama" :disabled="false" :required="true">
+                        <option value="" selected disabled>--Pilih Guru--</option>
+                        @foreach ($teachers as $teacher)
+                            <option value="{{ $teacher->id }}" @if (old('user_id', $guru->user->id) == $teacher->user_id) selected @endif>
+                                {{ $teacher->user->name }}</option>
+                        @endforeach
+                    </x-select-option>
                 </div>
                 <div class="input-group">
                     <x-label for="jenis_kelamin">Jenis Kelamin</x-label>
                     <x-select-option name="jenis_kelamin" id="jenis_kelamin" :disabled="false" :required="true">
                         <option value="" selected disabled>--Pilih Jenis Kelamin--</option>
-                        <option value="Laki-laki">Laki-laki</option>
-                        <option value="Perempuan">Perempuan</option>
+                        <option value="Laki-laki" @if (old('jenis_kelamin', $guru->jenis_kelamin) == 'Laki-laki') selected @endif>Laki-laki</option>
+                        <option value="Perempuan" @if (old('jenis_kelamin', $guru->jenis_kelamin) == 'Perempuan') selected @endif>Perempuan</option>
                     </x-select-option>
                 </div>
                 <div class="input-group">

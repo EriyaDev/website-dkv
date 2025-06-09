@@ -48,7 +48,7 @@ class GuruController extends Controller
             $file = $request->file('foto');
             $name = $file->hashName();
 
-            Storage::putFileAs('foto_guru', $file, $name);
+            Storage::disk('public')->putFileAs('foto_guru', $file, $name);
 
             $request['foto'] = $name;
         }
@@ -80,13 +80,13 @@ class GuruController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Guru $guru)
     {
-        $guru = Guru::findOrFail($id);
+        // $guru = Guru::findOrFail($id);
 
         $teachers = Guru::all();
 
-        return view('Admin.Guru.edit', compact('id', 'teachers', 'guru'));
+        return view('Admin.Guru.edit', compact('teachers', 'guru'));
     }
 
     /**
@@ -94,6 +94,7 @@ class GuruController extends Controller
      */
     public function update(Request $request, Guru $guru)
     {
+        // return $request->all();
         $request->validate([
             'user_id' => 'required|integer',
             'nip' => 'required|string',
@@ -125,7 +126,7 @@ class GuruController extends Controller
             'no_telepon' => $request->no_telepon,
         ]);
 
-        return redirect()->route('admin.guru.index')->with('success', 'Data berhasil dibuat!');
+        return redirect()->route('admin.guru.index')->with('success', 'Data berhasil diedit!');
     }
 
     /**
