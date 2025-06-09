@@ -53,7 +53,3 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'AdminMiddleware'])-
 // Route::get('/dashboard', function () {
 //     return view('Admin.Guru.create'); // Tak Ganti Cik, Nanti Sesuain aja
 // });
-
-Route::get('/konfirmasi', function () {
-    return view('Guru.konfirmasi');
-})->name('konfirmasi');
