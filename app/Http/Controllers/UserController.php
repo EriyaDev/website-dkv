@@ -16,6 +16,10 @@ class UserController extends Controller
         $user = auth()->user();
         $guru = $user->guru;
 
+        if (!$guru) {
+            return redirect()->intended('/konfirmasi');
+        }
+
         // return $guru;
         // $senin = Jadwal::all();
         $senin = Jadwal::where('hari', 'Senin')->where('guru_id', $guru->id)->orderBy('id', 'asc')->get();

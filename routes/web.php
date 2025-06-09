@@ -32,6 +32,7 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::middleware(['auth', 'GuruMiddleware'])->group(function () {
     Route::get('/dashboard', [UserController::class, 'index'])->name('dashboard');
     Route::get('/jadwal', [UserController::class, 'jadwal'])->name('jadwal');
+    Route::get('/konfirmasi', [UserController::class, 'index'])->name('konfirmasi');
 });
 
 // Admin Routes
@@ -52,3 +53,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'AdminMiddleware'])-
 // Route::get('/dashboard', function () {
 //     return view('Admin.Guru.create'); // Tak Ganti Cik, Nanti Sesuain aja
 // });
+
+Route::get('/konfirmasi', function () {
+    return view('Guru.konfirmasi');
+})->name('konfirmasi');
