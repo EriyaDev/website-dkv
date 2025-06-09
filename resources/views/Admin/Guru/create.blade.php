@@ -24,7 +24,7 @@
                 <div class="input-group">
                     <x-label for="nip">NIP</x-label>
                     <x-input id="nip" type="number" :disabled="false" :required="true" name="nip"
-                        value="" placeholder="Masukkan NIP guru..."></x-input>
+                        value="{{ old('nip') }}" placeholder="Masukkan NIP guru..."></x-input>
                 </div>
                 <div class="input-group">
                     <x-label for="nama">Nama</x-label>
@@ -51,12 +51,12 @@
                 <div class="input-group">
                     <x-label for="alamat">Alamat</x-label>
                     <x-input id="alamat" type="text" :disabled="false" :required="true" name="alamat"
-                        value="" placeholder="Masukkan alamat guru..."></x-input>
+                        value="{{ old('alamat') }}" placeholder="Masukkan alamat guru..."></x-input>
                 </div>
                 <div class="input-group">
                     <x-label for="no_telepon">No. Telepon</x-label>
                     <x-input id="no_telepon" type="tel" :disabled="false" :required="false" name="no_telepon"
-                        value="" placeholder="Masukkan no telepon guru..."></x-input>
+                        value="{{ old('no_telepon') }}" placeholder="Masukkan no telepon guru..."></x-input>
                 </div>
             </div>
             <div class="flex flex-row gap-3">
