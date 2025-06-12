@@ -28,12 +28,13 @@
                 </div>
                 <div class="input-group">
                     <x-label for="nama">Nama</x-label>
-                    <x-select-option name="user_id" id="nama" :disabled="false" :required="true">
+                    <select name="user_id" id="nama" required
+                        class="chosen-select bg-secondary-color placeholder-inactive-color border border-border-color text-sm rounded-lg focus:ring-accent-color outline-accent-color focus:border-accent-color block w-full p-2.5 disabled:text-text-secondary-color disabled:brightness-[.98]">
                         <option value="" selected disabled>--Pilih Guru--</option>
                         @foreach ($teachers as $teacher)
                             <option value="{{ $teacher->id }}">{{ $teacher->name }}</option>
                         @endforeach
-                    </x-select-option>
+                    </select>
                 </div>
                 <div class="input-group">
                     <x-label for="jenis_kelamin">Jenis Kelamin</x-label>

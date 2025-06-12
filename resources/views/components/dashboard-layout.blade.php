@@ -12,6 +12,7 @@
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
     <link rel="stylesheet" href=
 "https://cdnjs.cloudflare.com/ajax/libs/chosen/1.4.2/chosen.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css">
     @vite('resources/css/app.css')
 </head>
 
@@ -109,11 +110,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
 
     <script src="{{ asset('scripts/dropdown.js') }}"></script>
     <script src="{{ asset('scripts/responsive-sidebar.js') }}"></script>
     <script src="{{ asset('scripts/script.js') }}"></script>
     <script src="{{ asset('scripts/sweetalert.js') }}"></script>
+    <script src="{{ asset('scripts/chosen.js') }}"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
 
