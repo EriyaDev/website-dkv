@@ -28,6 +28,17 @@
                 </div>
                 <div class="input-group">
                     <x-label for="nama">Nama</x-label>
+                    <select name="user_id" id="nama" required
+                        class="chosen-select bg-secondary-color placeholder-inactive-color border border-border-color text-sm rounded-lg focus:ring-accent-color outline-accent-color focus:border-accent-color block w-full p-2.5 disabled:text-text-secondary-color disabled:brightness-[.98]">
+                        <option value="" selected disabled>--Pilih Guru--</option>
+                        @foreach ($teachers as $teacher)
+                            <option value="{{ $teacher->id }}" @if (old('user_id', $guru->user->id) == $teacher->user_id) selected @endif>
+                                {{ $teacher->user->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                {{-- <div class="input-group">
+                    <x-label for="nama">Nama</x-label>
                     <x-select-option name="user_id" id="nama" :disabled="false" :required="true">
                         <option value="" selected disabled>--Pilih Guru--</option>
                         @foreach ($teachers as $teacher)
@@ -35,7 +46,7 @@
                                 {{ $teacher->user->name }}</option>
                         @endforeach
                     </x-select-option>
-                </div>
+                </div> --}}
                 <div class="input-group">
                     <x-label for="jenis_kelamin">Jenis Kelamin</x-label>
                     <x-select-option name="jenis_kelamin" id="jenis_kelamin" :disabled="false" :required="true">
