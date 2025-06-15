@@ -31,9 +31,9 @@ class JamPelajaranController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'jam_pelajaran_ke' => 'required',
-            'jam_mulai' => 'required',
-            'jam_selesai' => 'required'
+            'jam_pelajaran_ke' => 'required|integer|unique:jam_pelajarans,jam_pelajaran_ke',
+            'jam_mulai' => 'required|unique:jam_pelajarans,jam_mulai',
+            'jam_selesai' => 'required|unique:jam_pelajarans,jam_selesai',
         ]);
 
         $data = [
@@ -74,9 +74,9 @@ class JamPelajaranController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'jam_pelajaran_ke' => 'required',
-            'jam_mulai' => 'required',
-            'jam_selesai' => 'required',
+            'jam_pelajaran_ke' => 'required|integer|unique:jam_pelajarans,jam_pelajaran_ke',
+            'jam_mulai' => 'required|unique:jam_pelajarans,jam_mulai',
+            'jam_selesai' => 'required|unique:jam_pelajarans,jam_selesai',
         ]);
 
         $data = [

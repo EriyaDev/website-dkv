@@ -37,11 +37,11 @@ class GuruController extends Controller
         // return request()->all();
         $request->validate([
             'user_id' => 'required|integer',
-            'nip' => 'required|string',
-            'foto' => 'required',
+            'nip' => 'required|string|unique:gurus,nip',
+            'foto' => 'required|image|mimes:jpg,jpeg,png|max:2048',
             'jenis_kelamin' => 'required|string',
             'alamat' => 'required|string',
-            'no_telepon' => 'required|string',
+            'no_telepon' => 'required|numeric|digits_between:10,15',
         ]);
 
         if ($request->file('foto')) {
@@ -101,7 +101,7 @@ class GuruController extends Controller
             'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'jenis_kelamin' => 'required|string',
             'alamat' => 'required|string',
-            'no_telepon' => 'required|string',
+            'no_telepon' => 'required|numeric|digits_between:10,15',
         ]);
 
         // Kalau ada file baru diupload, simpan file-nya

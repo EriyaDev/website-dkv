@@ -46,7 +46,7 @@ class JadwalController extends Controller
     {
         // return $request->all();
         $request->validate([
-            'hari' => 'required|string|max:15',
+            'hari' => 'required|string|max:15|unique:jadwals,hari',
             'guru_id' => 'required|string|exists:users,id',
             'kelas_id' => 'required|string|exists:kelass,id',
             'mapel_id' => 'required|string|exists:mapels,id',
@@ -103,7 +103,7 @@ class JadwalController extends Controller
     public function update(Request $request, Jadwal $jadwal)
     {
         $request->validate([
-            'hari' => 'required|string|max:15',
+            'hari' => 'required|string|max:15|unique:jadwals,hari',
             'guru_id' => 'required|string|exists:users,id',
             'kelas_id' => 'required|string|exists:kelass,id',
             'mapel_id' => 'required|string|exists:mapels,id',

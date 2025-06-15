@@ -30,7 +30,7 @@ class MapelController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama_mapel' => 'required'
+            'nama_mapel' => 'required|string|unique:mapels,nama_mapel'
         ]);
 
         $data = [
@@ -65,7 +65,7 @@ class MapelController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama_mapel' => 'required'
+            'nama_mapel' => 'required|unique:mapels,nama_mapel|string'
         ]);
 
         $data = [

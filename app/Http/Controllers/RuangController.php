@@ -30,7 +30,7 @@ class RuangController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama_ruang' => 'required',
+            'nama_ruang' => 'required|string|unique:ruangs,nama_ruang',
             'nama_gedung' => 'required'
         ]);
 
@@ -67,7 +67,7 @@ class RuangController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama_ruang' => 'required',
+            'nama_ruang' => 'required|string|unique:ruangs,nama_ruang',
             'nama_gedung' => 'required'
         ]);
 
